@@ -1,75 +1,712 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toothpencil</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: linear-gradient(135deg, #0f0a05 0%, #1f140a 100%);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: #fff;
-      overflow: hidden;
-    }
-    .container {
-      text-align: center;
-      padding: 2rem;
-      max-width: 600px;
-    }
-    .emoji {
-      font-size: 5rem;
-      display: block;
-      margin-bottom: 1.5rem;
-      animation: float 3s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: #fb923c;
-      margin-bottom: 0.75rem;
-    }
-    .tagline {
-      font-size: 1.2rem;
-      opacity: 0.7;
-      margin-bottom: 1.5rem;
-      font-style: italic;
-    }
-    .body {
-      font-size: 1rem;
-      opacity: 0.55;
-      line-height: 1.6;
-    }
-    .dot {
-      width: 8px; height: 8px;
-      background: #fb923c;
-      border-radius: 50%;
-      display: inline-block;
-      margin: 2rem auto 0;
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.3; transform: scale(0.6); }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toothpencil 🦷✏️ — Sharpen Your Smile</title>
+<meta name="description" content="The world's first charcoal toothbrush shaped like a pencil. Fully biodegradable. 1 brush = 1 tree. Sharpen your smile.">
+<meta property="og:title" content="Toothpencil — Sharpen Your Smile 🦷✏️">
+<meta property="og:description" content="The world's first charcoal toothbrush shaped like a pencil. Fully biodegradable. 1 brush = 1 tree.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://toothpencil.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --charcoal: #2D2D2D;
+  --yellow: #FFD700;
+  --mint: #98FB98;
+  --kraft: #D2B48C;
+  --kraft-light: #F5E6D0;
+  --white: #FAFAF8;
+  --tooth: #F8F6F0;
+  --pink: #FFB6C1;
+  --forest: #2E5E3F;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--kraft-light);
+  color: var(--charcoal);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Ticker */
+.ticker-wrap {
+  background: var(--charcoal);
+  overflow: hidden;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.ticker {
+  display: flex;
+  animation: ticker 30s linear infinite;
+  white-space: nowrap;
+}
+
+.ticker span {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--yellow);
+  padding: 0 40px;
+  letter-spacing: 0.1em;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 20px 80px;
+  position: relative;
+  background: var(--kraft-light);
+}
+
+.hero-emoji { font-size: 4rem; margin-bottom: 20px; animation: float 3s ease-in-out infinite; }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.hero h1 {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(4rem, 12vw, 10rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+}
+
+.hero .tagline {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: var(--forest);
+  margin-bottom: 30px;
+}
+
+.hero .desc {
+  max-width: 500px;
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+/* CSS Product Visualization */
+.product-viz {
+  position: relative;
+  width: 60px;
+  height: 320px;
+  margin: 0 auto 50px;
+}
+
+.pencil-body {
+  width: 60px;
+  height: 240px;
+  background: var(--yellow);
+  border-radius: 3px;
+  position: relative;
+  box-shadow: inset -8px 0 0 rgba(0,0,0,0.08);
+}
+
+.pencil-eraser {
+  width: 60px;
+  height: 40px;
+  background: var(--pink);
+  border-radius: 3px 3px 0 0;
+  position: absolute;
+  top: -40px;
+}
+
+.pencil-ferrule {
+  width: 60px;
+  height: 8px;
+  background: #C0C0C0;
+  position: absolute;
+  top: -2px;
+  background: repeating-linear-gradient(90deg, #C0C0C0, #C0C0C0 5px, #A8A8A8 5px, #A8A8A8 6px);
+}
+
+.pencil-tip {
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 40px solid var(--kraft);
+  position: absolute;
+  bottom: -40px;
+}
+
+.pencil-graphite {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 15px solid var(--charcoal);
+  position: absolute;
+  bottom: -53px;
+  left: 20px;
+}
+
+.bristles {
+  position: absolute;
+  bottom: -75px;
+  left: 10px;
+  width: 40px;
+  height: 22px;
+  background: var(--tooth);
+  border-radius: 0 0 8px 8px;
+  border: 1px solid #ddd;
+  border-top: none;
+}
+
+.bristles::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  right: 4px;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, #eee, #eee 2px, transparent 2px, transparent 4px);
+}
+
+.product-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--charcoal);
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+/* CTA */
+.cta-btn {
+  display: inline-block;
+  background: var(--charcoal);
+  color: var(--yellow);
+  padding: 16px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  transition: all 0.3s;
+  border: 2px solid var(--charcoal);
+}
+
+.cta-btn:hover {
+  background: var(--yellow);
+  color: var(--charcoal);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.cta-btn-mint {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: var(--mint);
+}
+
+.cta-btn-mint:hover {
+  background: var(--mint);
+  color: var(--forest);
+}
+
+/* Sections */
+.section {
+  padding: 100px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-full {
+  padding: 100px 20px;
+}
+
+h2 {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section-subtitle {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 50px;
+  color: #666;
+  font-size: 1.05rem;
+}
+
+/* How It Works */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.step {
+  text-align: center;
+  padding: 30px;
+}
+
+.step-num {
+  font-family: 'Caveat', cursive;
+  font-size: 4rem;
+  color: var(--yellow);
+  line-height: 1;
+}
+
+.step h3 {
+  font-family: 'Caveat', cursive;
+  font-size: 1.8rem;
+  margin: 10px 0;
+}
+
+.step p { font-size: 0.95rem; color: #666; }
+
+/* Impact */
+.impact {
+  background: var(--forest);
+  color: var(--white);
+  text-align: center;
+}
+
+.impact h2 { color: var(--mint); }
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.impact-stat {
+  padding: 30px;
+}
+
+.impact-stat .num {
+  font-family: 'Caveat', cursive;
+  font-size: 4rem;
+  color: var(--yellow);
+  line-height: 1;
+}
+
+.impact-stat .label {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+  margin-top: 5px;
+}
+
+/* Story */
+.story {
+  background: var(--white);
+}
+
+.story-content {
+  max-width: 650px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.story-content p {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.story-content .highlight {
+  font-family: 'Caveat', cursive;
+  font-size: 1.8rem;
+  color: var(--forest);
+  margin: 30px 0;
+}
+
+/* Pricing */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.price-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  border: 2px solid var(--kraft);
+  transition: all 0.3s;
+}
+
+.price-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.price-card.featured {
+  border-color: var(--yellow);
+  position: relative;
+}
+
+.price-card.featured::before {
+  content: '✏️ BEST VALUE';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--yellow);
+  color: var(--charcoal);
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.price-card .emoji { font-size: 2.5rem; margin-bottom: 15px; }
+
+.price-card h3 {
+  font-family: 'Caveat', cursive;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.price-card .price {
+  font-family: 'Space Mono', monospace;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.price-card .per {
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+.price-card .features {
+  list-style: none;
+  margin-bottom: 25px;
+}
+
+.price-card .features li {
+  padding: 6px 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.price-card .features li::before { content: '✓ '; color: var(--forest); font-weight: 700; }
+
+/* Waitlist */
+.waitlist {
+  background: var(--charcoal);
+  color: var(--white);
+  text-align: center;
+}
+
+.waitlist h2 { color: var(--yellow); }
+.waitlist p { color: rgba(255,255,255,0.7); }
+
+.waitlist-form {
+  max-width: 500px;
+  margin: 40px auto 0;
+  display: flex;
+  gap: 10px;
+}
+
+.waitlist-form input {
+  flex: 1;
+  padding: 16px 24px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 50px;
+  background: rgba(255,255,255,0.05);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.waitlist-form input::placeholder { color: rgba(255,255,255,0.4); }
+.waitlist-form input:focus { border-color: var(--yellow); }
+
+.waitlist-form button {
+  padding: 16px 32px;
+  background: var(--yellow);
+  color: var(--charcoal);
+  border: none;
+  border-radius: 50px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.waitlist-form button:hover {
+  background: var(--mint);
+  transform: translateY(-2px);
+}
+
+.waitlist-note {
+  margin-top: 15px;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  font-family: 'Space Mono', monospace;
+}
+
+/* Footer */
+footer {
+  padding: 40px 20px;
+  text-align: center;
+  background: var(--kraft-light);
+}
+
+footer .emoji { font-size: 2rem; margin-bottom: 10px; }
+
+footer p {
+  font-size: 0.8rem;
+  color: #999;
+  font-family: 'Space Mono', monospace;
+}
+
+footer a { color: var(--forest); text-decoration: none; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .steps, .impact-grid, .pricing-grid { grid-template-columns: 1fr; }
+  .waitlist-form { flex-direction: column; }
+  .product-viz { transform: scale(0.8); }
+}
+
+/* Kraft paper texture via CSS */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <span class="emoji">✏️</span>
-    <h1>Toothpencil</h1>
-    <p class="tagline">We have no idea either.</p>
-    <p class="body">A tooth. A pencil. Together at last. Something is coming.</p>
-    <div class="dot"></div>
+
+<!-- Scrolling Ticker -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>🦷✏️ SHARPEN YOUR SMILE</span>
+    <span>1 BRUSH = 1 TREE 🌳</span>
+    <span>ZERO PLASTIC</span>
+    <span>100% BIODEGRADABLE</span>
+    <span>CHARCOAL-INFUSED BRISTLES</span>
+    <span>MADE WITH AMERICAN CEDAR 🇺🇸</span>
+    <span>TOOTHPENCIL.COM</span>
+    <span>🦷✏️ SHARPEN YOUR SMILE</span>
+    <span>1 BRUSH = 1 TREE 🌳</span>
+    <span>ZERO PLASTIC</span>
+    <span>100% BIODEGRADABLE</span>
+    <span>CHARCOAL-INFUSED BRISTLES</span>
+    <span>MADE WITH AMERICAN CEDAR 🇺🇸</span>
+    <span>TOOTHPENCIL.COM</span>
   </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-emoji">🦷✏️</div>
+
+  <div class="product-viz">
+    <div class="pencil-eraser"></div>
+    <div class="pencil-body">
+      <div class="pencil-ferrule"></div>
+      <span class="product-label">TOOTHPENCIL</span>
+    </div>
+    <div class="pencil-tip"></div>
+    <div class="pencil-graphite"></div>
+    <div class="bristles"></div>
+  </div>
+
+  <h1>TOOTHPENCIL</h1>
+  <div class="tagline">Sharpen Your Smile</div>
+  <p class="desc">The world's first charcoal toothbrush shaped like a pencil. Fully biodegradable. Made from trees. Returns to trees.</p>
+  <a href="#waitlist" class="cta-btn">JOIN THE WAITLIST ✏️</a>
+</section>
+
+<!-- How It Works -->
+<section class="section">
+  <h2>How It Works ✏️</h2>
+  <p class="section-subtitle">It's a toothbrush. Shaped like a pencil. Made entirely from plants. That's it. That's the product.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Unbox Your Pencil</h3>
+      <p>Arrives in a kraft paper box (recyclable, obviously). Pull it out like a No. 2 on test day.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Brush With It</h3>
+      <p>Charcoal-infused bristles whiten naturally. Cedar handle feels warm in your hand. Hexagonal grip means no rolling off the counter.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Compost It</h3>
+      <p>When you're done (every 3 months, dentist's orders), toss it in the compost. It becomes soil. A tree grows. Circle of life.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Climate Impact -->
+<section class="section-full impact">
+  <h2>Your Smile Plants Trees 🌳</h2>
+  <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">Every Toothpencil purchased plants one tree through our reforestation partners. Zero plastic. Full circle.</p>
+
+  <div class="impact-grid">
+    <div class="impact-stat">
+      <div class="num">1B+</div>
+      <div class="label">Plastic toothbrushes enter US landfills every year</div>
+    </div>
+    <div class="impact-stat">
+      <div class="num">0</div>
+      <div class="label">Pieces of plastic in a Toothpencil</div>
+    </div>
+    <div class="impact-stat">
+      <div class="num">1:1</div>
+      <div class="label">Every brush purchased plants one tree</div>
+    </div>
+  </div>
+</section>
+
+<!-- The Story -->
+<section class="section-full story">
+  <div class="section" style="padding-top: 0; padding-bottom: 0;">
+    <h2>The General Pencil Story ✏️</h2>
+    <div class="story-content">
+      <p>In Jersey City, New Jersey, there's a factory that's been making pencils since 1889. Five generations. One of the last pencil factories in America.</p>
+      <div class="highlight">"What if we took a pencil factory and made it save the planet?"</div>
+      <p>General Pencil Company already knows how to shape cedar into perfect hexagons, lacquer them in that iconic yellow, and ship them to hands that want to create something. We just asked them to point those pencils at a different kind of canvas — your teeth.</p>
+      <p>Same cedar. Same craft. Same American factory. But now, instead of writing on paper, you're writing a better future — one brush at a time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="section">
+  <h2>Pick Your Pencil 🦷✏️</h2>
+  <p class="section-subtitle">Every option plants trees. Every option is plastic-free. The only question is how sharp you want your smile.</p>
+
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="emoji">✏️</div>
+      <h3>The Single</h3>
+      <div class="price">$4.99</div>
+      <div class="per">one toothpencil</div>
+      <ul class="features">
+        <li>1 charcoal Toothpencil</li>
+        <li>Kraft paper packaging</li>
+        <li>Plantable seed card</li>
+        <li>1 tree planted</li>
+      </ul>
+      <a href="#waitlist" class="cta-btn" style="font-size: 0.75rem; padding: 12px 28px;">GET ONE</a>
+    </div>
+
+    <div class="price-card featured">
+      <div class="emoji">✏️✏️✏️</div>
+      <h3>The Pencil Case</h3>
+      <div class="price">$11.99</div>
+      <div class="per">3-pack · $4.00 each</div>
+      <ul class="features">
+        <li>3 charcoal Toothpencils</li>
+        <li>Family or roommate pack</li>
+        <li>Gift-ready box</li>
+        <li>3 trees planted</li>
+      </ul>
+      <a href="#waitlist" class="cta-btn" style="font-size: 0.75rem; padding: 12px 28px;">BEST VALUE</a>
+    </div>
+
+    <div class="price-card">
+      <div class="emoji">📦</div>
+      <h3>The Annual</h3>
+      <div class="price">$39.99</div>
+      <div class="per">4 brushes/year · $2.50/quarter</div>
+      <ul class="features">
+        <li>New Toothpencil every 3 months</li>
+        <li>Seasonal editions</li>
+        <li>Free shipping</li>
+        <li>4 trees planted/year</li>
+        <li>Wooden pencil cup holder</li>
+      </ul>
+      <a href="#waitlist" class="cta-btn-mint cta-btn" style="font-size: 0.75rem; padding: 12px 28px;">SUBSCRIBE</a>
+    </div>
+  </div>
+</section>
+
+<!-- Waitlist -->
+<section id="waitlist" class="section-full waitlist">
+  <div class="section" style="padding-top: 0; padding-bottom: 0;">
+    <h2>Get on the List 🦷✏️</h2>
+    <p class="section-subtitle" style="color: rgba(255,255,255,0.6);">Be the first to sharpen your smile. Early supporters get launch pricing and a limited-edition Toothpencil.</p>
+
+    <form class="waitlist-form" onsubmit="handleSubmit(event)">
+      <input type="email" placeholder="your@email.com" required id="email-input">
+      <button type="submit">SHARPEN UP ✏️</button>
+    </form>
+    <div class="waitlist-note" id="waitlist-note">No spam. Just pencils for your teeth. 🦷✏️</div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="emoji">🦷✏️</div>
+  <p><strong>TOOTHPENCIL</strong> — Sharpen Your Smile</p>
+  <p style="margin-top: 8px;">Founded by <a href="#">Elliot Roth</a> · Made with 🌳 in Jersey City</p>
+  <p style="margin-top: 8px;">
+    <a href="https://instagram.com/toothpencil">Instagram</a> ·
+    <a href="https://tiktok.com/@toothpencil">TikTok</a> ·
+    <a href="https://twitter.com/toothpencil">Twitter</a>
+  </p>
+  <p style="margin-top: 15px;">&copy; 2026 Toothpencil. All rights reserved. 1 brush = 1 tree.</p>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const email = document.getElementById('email-input').value;
+  const note = document.getElementById('waitlist-note');
+  note.textContent = '🎉 You\'re on the list! Welcome to the pencil case, ' + email.split('@')[0] + '. 🦷✏️';
+  note.style.color = 'var(--mint)';
+  note.style.fontSize = '1rem';
+  document.getElementById('email-input').value = '';
+  document.getElementById('email-input').placeholder = 'Added! 🎉';
+}
+</script>
+
 </body>
 </html>
