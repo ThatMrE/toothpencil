@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Toothpencil 🦷✏️ — Sharpen Your Smile</title>
-<meta name="description" content="The world's first charcoal toothbrush shaped like a pencil. Fully biodegradable. 1 brush = 1 tree. Sharpen your smile.">
-<meta property="og:title" content="Toothpencil — Sharpen Your Smile 🦷✏️">
-<meta property="og:description" content="The world's first charcoal toothbrush shaped like a pencil. Fully biodegradable. 1 brush = 1 tree.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://toothpencil.com">
+<title>Toothpencil &#x1F9B7;&#x270F;&#xFE0F; &mdash; Sharpen Your Smile</title>
+<meta name="description" content="The world's first charcoal miswak stick shaped like a pencil. 100% natural, zero plastic, fully biodegradable. 1 brush = 1 tree. Sharpen your smile.">
+<meta property="og:title" content="Toothpencil &mdash; Sharpen Your Smile &#x1F9B7;&#x270F;&#xFE0F;">
+<meta property="og:description" content="The world's first charcoal miswak stick shaped like a pencil. Zero plastic. 1 brush = 1 tree.">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -21,6 +19,8 @@
   --tooth: #F8F6F0;
   --pink: #FFB6C1;
   --forest: #2E5E3F;
+  --miswak: #8B5E2A;
+  --miswak-light: #C4914A;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,24 +34,20 @@ body {
   overflow-x: hidden;
 }
 
-/* Ticker */
+/* ── TICKER ── */
 .ticker-wrap {
   background: var(--charcoal);
   overflow: hidden;
   padding: 10px 0;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 1000;
 }
-
 .ticker {
   display: flex;
-  animation: ticker 30s linear infinite;
+  animation: ticker 35s linear infinite;
   white-space: nowrap;
 }
-
 .ticker span {
   font-family: 'Space Mono', monospace;
   font-size: 0.75rem;
@@ -59,13 +55,9 @@ body {
   padding: 0 40px;
   letter-spacing: 0.1em;
 }
+@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-@keyframes ticker {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* Hero */
+/* ── HERO ── */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -77,11 +69,105 @@ body {
   position: relative;
   background: var(--kraft-light);
 }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
 
 .hero-emoji { font-size: 4rem; margin-bottom: 20px; animation: float 3s ease-in-out infinite; }
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+/* ── MISWAK PRODUCT VIZ ── */
+.miswak-viz {
+  position: relative;
+  width: 80px;
+  height: 340px;
+  margin: 0 auto 50px;
+}
+/* natural stick body — tapered, organic */
+.miswak-body {
+  width: 22px;
+  height: 260px;
+  background: linear-gradient(90deg, #7a4f1e, var(--miswak-light) 40%, var(--miswak) 60%, #6b3e15);
+  border-radius: 11px 11px 4px 4px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: inset -3px 0 6px rgba(0,0,0,0.2), inset 3px 0 6px rgba(255,255,255,0.1);
+}
+/* charcoal band near base */
+.miswak-charcoal {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 40px;
+  top: 220px;
+  background: linear-gradient(to bottom, var(--miswak), #1a1a1a);
+  border-radius: 0 0 4px 4px;
+}
+/* pointed tip at bottom */
+.miswak-tip {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-top: 24px solid #1a1a1a;
+  top: 258px;
+}
+/* frayed bristle end at top */
+.miswak-bristles {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 28px;
+}
+.bristle-line {
+  position: absolute;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to top, var(--tooth), transparent);
+  border-radius: 1px;
+  transform-origin: bottom center;
+}
+/* pencil yellow band + label */
+.miswak-band {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 14px;
+  background: var(--yellow);
+  top: 100px;
+  z-index: 2;
+}
+.miswak-band::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--charcoal);
+}
+.miswak-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.45rem;
+  letter-spacing: 0.18em;
+  color: var(--charcoal);
+  white-space: nowrap;
+  font-weight: 700;
+  z-index: 3;
 }
 
 .hero h1 {
@@ -91,155 +177,61 @@ body {
   letter-spacing: 0.02em;
   margin-bottom: 20px;
 }
-
 .hero .tagline {
   font-family: 'Caveat', cursive;
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   color: var(--forest);
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
-
 .hero .desc {
-  max-width: 500px;
-  font-size: 1.1rem;
+  max-width: 540px;
+  font-size: 1.05rem;
   color: #666;
-  margin-bottom: 40px;
+  margin-bottom: 15px;
+  line-height: 1.7;
 }
-
-/* CSS Product Visualization */
-.product-viz {
-  position: relative;
-  width: 60px;
-  height: 320px;
-  margin: 0 auto 50px;
-}
-
-.pencil-body {
-  width: 60px;
-  height: 240px;
-  background: var(--yellow);
-  border-radius: 3px;
-  position: relative;
-  box-shadow: inset -8px 0 0 rgba(0,0,0,0.08);
-}
-
-.pencil-eraser {
-  width: 60px;
-  height: 40px;
-  background: var(--pink);
-  border-radius: 3px 3px 0 0;
-  position: absolute;
-  top: -40px;
-}
-
-.pencil-ferrule {
-  width: 60px;
-  height: 8px;
-  background: #C0C0C0;
-  position: absolute;
-  top: -2px;
-  background: repeating-linear-gradient(90deg, #C0C0C0, #C0C0C0 5px, #A8A8A8 5px, #A8A8A8 6px);
-}
-
-.pencil-tip {
-  width: 0;
-  height: 0;
-  border-left: 30px solid transparent;
-  border-right: 30px solid transparent;
-  border-top: 40px solid var(--kraft);
-  position: absolute;
-  bottom: -40px;
-}
-
-.pencil-graphite {
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 15px solid var(--charcoal);
-  position: absolute;
-  bottom: -53px;
-  left: 20px;
-}
-
-.bristles {
-  position: absolute;
-  bottom: -75px;
-  left: 10px;
-  width: 40px;
-  height: 22px;
-  background: var(--tooth);
-  border-radius: 0 0 8px 8px;
-  border: 1px solid #ddd;
-  border-top: none;
-}
-
-.bristles::before {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 4px;
-  right: 4px;
-  height: 2px;
-  background: repeating-linear-gradient(90deg, #eee, #eee 2px, transparent 2px, transparent 4px);
-}
-
-.product-label {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-90deg);
+.hero .miswak-note {
   font-family: 'Space Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  color: var(--charcoal);
-  white-space: nowrap;
-  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--miswak);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+  padding: 6px 16px;
+  background: rgba(139,94,42,0.08);
+  border-radius: 100px;
+  display: inline-block;
 }
 
-/* CTA */
 .cta-btn {
   display: inline-block;
   background: var(--charcoal);
   color: var(--yellow);
   padding: 16px 40px;
   border-radius: 50px;
-  text-decoration: none;
   font-family: 'Space Mono', monospace;
   font-size: 0.9rem;
   letter-spacing: 0.1em;
   transition: all 0.3s;
   border: 2px solid var(--charcoal);
+  margin: 0 6px;
 }
-
 .cta-btn:hover {
   background: var(--yellow);
   color: var(--charcoal);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
-
-.cta-btn-mint {
+.cta-btn-green {
   background: var(--forest);
   border-color: var(--forest);
   color: var(--mint);
 }
+.cta-btn-green:hover { background: var(--mint); color: var(--forest); }
 
-.cta-btn-mint:hover {
-  background: var(--mint);
-  color: var(--forest);
-}
-
-/* Sections */
-.section {
-  padding: 100px 20px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.section-full {
-  padding: 100px 20px;
-}
+/* ── WHAT IS MISWAK ── */
+.section { padding: 100px 20px; max-width: 900px; margin: 0 auto; }
+.section-full { padding: 100px 20px; }
 
 h2 {
   font-family: 'Caveat', cursive;
@@ -247,16 +239,71 @@ h2 {
   margin-bottom: 20px;
   text-align: center;
 }
-
 .section-subtitle {
   text-align: center;
   max-width: 600px;
   margin: 0 auto 50px;
   color: #666;
   font-size: 1.05rem;
+  line-height: 1.75;
 }
 
-/* How It Works */
+/* miswak explainer */
+.miswak-explainer {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 50px 40px;
+  margin: 40px 0;
+  border: 2px solid var(--kraft);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.miswak-explainer .left h3 {
+  font-family: 'Caveat', cursive;
+  font-size: 2rem;
+  color: var(--miswak);
+  margin-bottom: 12px;
+}
+.miswak-explainer .left p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+.miswak-tag {
+  display: inline-block;
+  background: rgba(139,94,42,0.1);
+  color: var(--miswak);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin: 2px;
+}
+.fact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.fact-card {
+  background: var(--kraft-light);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+}
+.fact-card .num {
+  font-family: 'Caveat', cursive;
+  font-size: 2.2rem;
+  color: var(--forest);
+  line-height: 1;
+}
+.fact-card .label { font-size: 0.78rem; color: #777; margin-top: 4px; }
+
+/* ── HOW IT WORKS ── */
 .steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -264,36 +311,44 @@ h2 {
   max-width: 900px;
   margin: 0 auto;
 }
-
-.step {
-  text-align: center;
-  padding: 30px;
-}
-
-.step-num {
-  font-family: 'Caveat', cursive;
-  font-size: 4rem;
-  color: var(--yellow);
-  line-height: 1;
-}
-
-.step h3 {
-  font-family: 'Caveat', cursive;
-  font-size: 1.8rem;
-  margin: 10px 0;
-}
-
+.step { text-align: center; padding: 30px; }
+.step-num { font-family: 'Caveat', cursive; font-size: 4rem; color: var(--yellow); line-height: 1; }
+.step h3 { font-family: 'Caveat', cursive; font-size: 1.8rem; margin: 10px 0; }
 .step p { font-size: 0.95rem; color: #666; }
 
-/* Impact */
-.impact {
-  background: var(--forest);
-  color: var(--white);
-  text-align: center;
+/* ── COMPARISON ── */
+.compare-band { background: var(--charcoal); color: var(--white); }
+.compare-band h2 { color: var(--yellow); }
+.compare-band .section-subtitle { color: rgba(255,255,255,0.6); }
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  max-width: 800px;
+  margin: 0 auto;
 }
+.compare-table th {
+  background: rgba(255,215,0,0.1);
+  color: var(--yellow);
+  padding: 14px 18px;
+  text-align: left;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.compare-table td {
+  padding: 13px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.75);
+}
+.compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+.compare-table td:first-child { color: var(--white); font-weight: 600; }
+.compare-table .win { color: var(--mint); font-weight: 700; }
 
+/* ── IMPACT ── */
+.impact { background: var(--forest); color: var(--white); text-align: center; }
 .impact h2 { color: var(--mint); }
-
 .impact-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -301,50 +356,11 @@ h2 {
   max-width: 800px;
   margin: 0 auto;
 }
+.impact-stat { padding: 30px; }
+.impact-stat .num { font-family: 'Caveat', cursive; font-size: 4rem; color: var(--yellow); line-height: 1; }
+.impact-stat .label { font-size: 0.9rem; color: rgba(255,255,255,0.75); margin-top: 5px; }
 
-.impact-stat {
-  padding: 30px;
-}
-
-.impact-stat .num {
-  font-family: 'Caveat', cursive;
-  font-size: 4rem;
-  color: var(--yellow);
-  line-height: 1;
-}
-
-.impact-stat .label {
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.8);
-  margin-top: 5px;
-}
-
-/* Story */
-.story {
-  background: var(--white);
-}
-
-.story-content {
-  max-width: 650px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.story-content p {
-  font-size: 1.1rem;
-  line-height: 1.9;
-  margin-bottom: 20px;
-  color: #555;
-}
-
-.story-content .highlight {
-  font-family: 'Caveat', cursive;
-  font-size: 1.8rem;
-  color: var(--forest);
-  margin: 30px 0;
-}
-
-/* Pricing */
+/* ── PRICING ── */
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -352,7 +368,6 @@ h2 {
   max-width: 900px;
   margin: 0 auto;
 }
-
 .price-card {
   background: var(--white);
   border-radius: 20px;
@@ -361,19 +376,13 @@ h2 {
   border: 2px solid var(--kraft);
   transition: all 0.3s;
 }
-
-.price-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-}
-
+.price-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
 .price-card.featured {
   border-color: var(--yellow);
   position: relative;
 }
-
 .price-card.featured::before {
-  content: '✏️ BEST VALUE';
+  content: '&#x270F;&#xFE0F; BEST VALUE';
   position: absolute;
   top: -12px;
   left: 50%;
@@ -386,59 +395,52 @@ h2 {
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   font-weight: 700;
+  white-space: nowrap;
 }
-
 .price-card .emoji { font-size: 2.5rem; margin-bottom: 15px; }
+.price-card h3 { font-family: 'Caveat', cursive; font-size: 1.8rem; margin-bottom: 10px; }
+.price-card .price { font-family: 'Space Mono', monospace; font-size: 2.5rem; font-weight: 700; margin-bottom: 5px; }
+.price-card .per { font-size: 0.85rem; color: #999; margin-bottom: 20px; }
+.price-card .features { list-style: none; margin-bottom: 25px; }
+.price-card .features li { padding: 6px 0; font-size: 0.9rem; color: #666; }
+.price-card .features li::before { content: '\2713 '; color: var(--forest); font-weight: 700; }
 
-.price-card h3 {
+/* ── SCIENCE / BRAND ── */
+.brand-taglines {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+.tagline-pill {
+  background: var(--white);
+  border: 2px solid var(--kraft);
+  border-radius: 16px;
+  padding: 24px;
   font-family: 'Caveat', cursive;
-  font-size: 1.8rem;
-  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: var(--charcoal);
+  line-height: 1.3;
 }
-
-.price-card .price {
-  font-family: 'Space Mono', monospace;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 5px;
-}
-
-.price-card .per {
-  font-size: 0.85rem;
-  color: #999;
-  margin-bottom: 20px;
-}
-
-.price-card .features {
-  list-style: none;
-  margin-bottom: 25px;
-}
-
-.price-card .features li {
-  padding: 6px 0;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.price-card .features li::before { content: '✓ '; color: var(--forest); font-weight: 700; }
-
-/* Waitlist */
-.waitlist {
+.tagline-pill.big {
+  grid-column: span 2;
   background: var(--charcoal);
-  color: var(--white);
+  color: var(--yellow);
+  font-size: 2rem;
   text-align: center;
+  border-color: var(--charcoal);
 }
 
+/* ── WAITLIST ── */
+.waitlist { background: var(--charcoal); color: var(--white); text-align: center; }
 .waitlist h2 { color: var(--yellow); }
 .waitlist p { color: rgba(255,255,255,0.7); }
-
 .waitlist-form {
   max-width: 500px;
   margin: 40px auto 0;
   display: flex;
   gap: 10px;
 }
-
 .waitlist-form input {
   flex: 1;
   padding: 16px 24px;
@@ -451,10 +453,8 @@ h2 {
   outline: none;
   transition: border-color 0.3s;
 }
-
 .waitlist-form input::placeholder { color: rgba(255,255,255,0.4); }
 .waitlist-form input:focus { border-color: var(--yellow); }
-
 .waitlist-form button {
   padding: 16px 32px;
   background: var(--yellow);
@@ -469,129 +469,187 @@ h2 {
   transition: all 0.3s;
   white-space: nowrap;
 }
+.waitlist-form button:hover { background: var(--mint); transform: translateY(-2px); }
+.waitlist-note { margin-top: 15px; font-size: 0.8rem; color: rgba(255,255,255,0.4); font-family: 'Space Mono', monospace; }
 
-.waitlist-form button:hover {
-  background: var(--mint);
-  transform: translateY(-2px);
-}
-
-.waitlist-note {
-  margin-top: 15px;
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.4);
-  font-family: 'Space Mono', monospace;
-}
-
-/* Footer */
+/* ── FOOTER ── */
 footer {
   padding: 40px 20px;
   text-align: center;
   background: var(--kraft-light);
+  border-top: 2px solid var(--kraft);
 }
-
-footer .emoji { font-size: 2rem; margin-bottom: 10px; }
-
-footer p {
-  font-size: 0.8rem;
-  color: #999;
-  font-family: 'Space Mono', monospace;
-}
-
+footer p { font-size: 0.8rem; color: #999; font-family: 'Space Mono', monospace; }
 footer a { color: var(--forest); text-decoration: none; }
 
-/* Responsive */
 @media (max-width: 768px) {
   .steps, .impact-grid, .pricing-grid { grid-template-columns: 1fr; }
+  .miswak-explainer { grid-template-columns: 1fr; }
+  .brand-taglines { grid-template-columns: 1fr; }
+  .tagline-pill.big { grid-column: span 1; }
   .waitlist-form { flex-direction: column; }
-  .product-viz { transform: scale(0.8); }
-}
-
-/* Kraft paper texture via CSS */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
+  .fact-grid { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
 <body>
 
-<!-- Scrolling Ticker -->
+<!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker">
-    <span>🦷✏️ SHARPEN YOUR SMILE</span>
-    <span>1 BRUSH = 1 TREE 🌳</span>
+    <span>&#x1F9B7;&#x270F;&#xFE0F; SHARPEN YOUR SMILE</span>
+    <span>1 STICK = 1 TREE &#x1F333;</span>
     <span>ZERO PLASTIC</span>
-    <span>100% BIODEGRADABLE</span>
-    <span>CHARCOAL-INFUSED BRISTLES</span>
-    <span>MADE WITH AMERICAN CEDAR 🇺🇸</span>
+    <span>100% NATURAL MISWAK</span>
+    <span>CHARCOAL-INFUSED &#x1F4AA;</span>
+    <span>USED FOR 7,000 YEARS</span>
     <span>TOOTHPENCIL.COM</span>
-    <span>🦷✏️ SHARPEN YOUR SMILE</span>
-    <span>1 BRUSH = 1 TREE 🌳</span>
+    <span>&#x1F9B7;&#x270F;&#xFE0F; SHARPEN YOUR SMILE</span>
+    <span>1 STICK = 1 TREE &#x1F333;</span>
     <span>ZERO PLASTIC</span>
-    <span>100% BIODEGRADABLE</span>
-    <span>CHARCOAL-INFUSED BRISTLES</span>
-    <span>MADE WITH AMERICAN CEDAR 🇺🇸</span>
+    <span>100% NATURAL MISWAK</span>
+    <span>CHARCOAL-INFUSED &#x1F4AA;</span>
+    <span>USED FOR 7,000 YEARS</span>
     <span>TOOTHPENCIL.COM</span>
   </div>
 </div>
 
-<!-- Hero -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-emoji">🦷✏️</div>
+  <div class="hero-emoji">&#x1F9B7;&#x270F;&#xFE0F;</div>
 
-  <div class="product-viz">
-    <div class="pencil-eraser"></div>
-    <div class="pencil-body">
-      <div class="pencil-ferrule"></div>
-      <span class="product-label">TOOTHPENCIL</span>
+  <!-- Miswak Stick Visualization -->
+  <div class="miswak-viz">
+    <!-- bristles at top -->
+    <div class="miswak-bristles">
+      <div class="bristle-line" style="left:6px;height:20px;transform:rotate(-15deg);opacity:0.9;"></div>
+      <div class="bristle-line" style="left:10px;height:26px;transform:rotate(-5deg);opacity:1;"></div>
+      <div class="bristle-line" style="left:14px;height:28px;opacity:1;"></div>
+      <div class="bristle-line" style="left:18px;height:26px;transform:rotate(5deg);opacity:1;"></div>
+      <div class="bristle-line" style="left:22px;height:20px;transform:rotate(15deg);opacity:0.9;"></div>
     </div>
-    <div class="pencil-tip"></div>
-    <div class="pencil-graphite"></div>
-    <div class="bristles"></div>
+    <!-- main body -->
+    <div class="miswak-body" style="top:26px;"></div>
+    <!-- yellow pencil band -->
+    <div class="miswak-band" style="top:126px;">
+      <span class="miswak-label">TOOTHPENCIL</span>
+    </div>
+    <!-- charcoal section -->
+    <div class="miswak-charcoal" style="top:246px;"></div>
+    <!-- tip -->
+    <div class="miswak-tip" style="top:284px;"></div>
   </div>
 
   <h1>TOOTHPENCIL</h1>
   <div class="tagline">Sharpen Your Smile</div>
-  <p class="desc">The world's first charcoal toothbrush shaped like a pencil. Fully biodegradable. Made from trees. Returns to trees.</p>
-  <a href="#waitlist" class="cta-btn">JOIN THE WAITLIST ✏️</a>
+  <p class="desc">The world&rsquo;s first charcoal miswak stick shaped like a pencil. 100% natural, zero plastic, fully biodegradable. Used for 7,000 years &mdash; now in No. 2 pencil form.</p>
+  <div class="miswak-note">&#x1F331; Salvadora persica &middot; Natural Miswak &middot; Charcoal-Infused</div>
+  <a href="#waitlist" class="cta-btn">JOIN THE WAITLIST &#x270F;&#xFE0F;</a>
+  <a href="#what-is-miswak" class="cta-btn cta-btn-green">What&rsquo;s a Miswak?</a>
 </section>
 
-<!-- How It Works -->
-<section class="section">
-  <h2>How It Works ✏️</h2>
-  <p class="section-subtitle">It's a toothbrush. Shaped like a pencil. Made entirely from plants. That's it. That's the product.</p>
+<!-- WHAT IS MISWAK -->
+<section class="section" id="what-is-miswak">
+  <h2>Wait &mdash; What&rsquo;s a Miswak? &#x1F9B7;</h2>
+  <p class="section-subtitle">It&rsquo;s the original toothbrush. Seriously. Humans have been cleaning their teeth with this thing for over 7,000 years. We just made it look like a No. 2 pencil.</p>
 
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Unbox Your Pencil</h3>
-      <p>Arrives in a kraft paper box (recyclable, obviously). Pull it out like a No. 2 on test day.</p>
+  <div class="miswak-explainer">
+    <div class="left">
+      <h3>Salvadora persica</h3>
+      <p>The miswak (also called siwak or chewing stick) is a teeth-cleaning twig from the Salvadora persica tree &mdash; native to Africa, the Arabian Peninsula, and South Asia.</p>
+      <p>The WHO recommends miswak as an effective tool for maintaining oral hygiene. Its fibers naturally contain <strong>silica</strong> (abrasive), <strong>fluoride</strong> (cavity protection), <strong>trimethylamine</strong> (antibacterial), and <strong>salvadorine</strong> (natural disinfectant).</p>
+      <p>No toothpaste required. No plastic. Just chew the tip until it&rsquo;s frayed, brush.</p>
+      <div style="margin-top:16px;">
+        <span class="miswak-tag">Natural Fluoride</span>
+        <span class="miswak-tag">Antibacterial</span>
+        <span class="miswak-tag">Whitening Silica</span>
+        <span class="miswak-tag">Zero Plastic</span>
+        <span class="miswak-tag">7,000 Years Old</span>
+        <span class="miswak-tag">WHO Recommended</span>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Brush With It</h3>
-      <p>Charcoal-infused bristles whiten naturally. Cedar handle feels warm in your hand. Hexagonal grip means no rolling off the counter.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Compost It</h3>
-      <p>When you're done (every 3 months, dentist's orders), toss it in the compost. It becomes soil. A tree grows. Circle of life.</p>
+    <div class="right">
+      <div class="fact-grid">
+        <div class="fact-card">
+          <div class="num">7K+</div>
+          <div class="label">Years of use</div>
+        </div>
+        <div class="fact-card">
+          <div class="num">0</div>
+          <div class="label">Pieces of plastic</div>
+        </div>
+        <div class="fact-card">
+          <div class="num">100%</div>
+          <div class="label">Biodegradable</div>
+        </div>
+        <div class="fact-card">
+          <div class="num">WHO</div>
+          <div class="label">Recommended</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Climate Impact -->
-<section class="section-full impact">
-  <h2>Your Smile Plants Trees 🌳</h2>
-  <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">Every Toothpencil purchased plants one tree through our reforestation partners. Zero plastic. Full circle.</p>
+<!-- HOW IT WORKS -->
+<section class="section-full" style="background: var(--white);">
+  <h2 style="text-align:center;">How It Works &#x270F;&#xFE0F;</h2>
+  <p class="section-subtitle">It&rsquo;s a miswak stick. Shaped like a pencil. Infused with activated charcoal. That&rsquo;s it. That&rsquo;s the product.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Peel the Cap</h3>
+      <p>The eraser cap protects the pre-frayed bristle end during shipping. Pop it off when you&rsquo;re ready to brush.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Brush With It</h3>
+      <p>Natural miswak fibers clean teeth without toothpaste. Charcoal infusion boosts whitening. The pencil shape means a comfortable hex grip that won&rsquo;t roll off your counter.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Compost It</h3>
+      <p>After 1&ndash;4 weeks of daily use, toss it in the compost. It breaks down in weeks. A tree grows. Circle of life. You know the drill.</p>
+    </div>
+  </div>
+</section>
 
+<!-- COMPARISON -->
+<div class="section-full compare-band">
+  <section class="section" style="padding-top:0;padding-bottom:0;">
+    <h2>Miswak vs. Everything Else</h2>
+    <p class="section-subtitle">Spoiler: 7,000 years of R&amp;D beats most competitors.</p>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Toothpencil (Miswak)</th>
+          <th>Bamboo Brushes</th>
+          <th>Plastic Brush</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Material</td><td class="win">Salvadora persica (natural)</td><td>Bamboo + nylon bristles</td><td>Petroleum plastic</td></tr>
+        <tr><td>Bristles</td><td class="win">Natural wood fibers (integral)</td><td>Nylon (synthetic)</td><td>Nylon (synthetic)</td></tr>
+        <tr><td>Toothpaste needed</td><td class="win">No &mdash; built-in cleaners</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td>Natural fluoride</td><td class="win">Yes (naturally occurring)</td><td>No</td><td>No</td></tr>
+        <tr><td>Antibacterial</td><td class="win">Yes (trimethylamine)</td><td>No</td><td>No</td></tr>
+        <tr><td>Biodegradable</td><td class="win">100% in weeks</td><td>Partial (nylon bristles don&rsquo;t)</td><td>Never (500+ years)</td></tr>
+        <tr><td>Charcoal whitening</td><td class="win">Yes (infused)</td><td>Optional</td><td>No</td></tr>
+        <tr><td>WHO recommended</td><td class="win">Yes</td><td>No</td><td>No</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+
+<!-- IMPACT -->
+<section class="section-full impact">
+  <h2>Your Smile Plants Trees &#x1F333;</h2>
+  <p class="section-subtitle" style="color:rgba(255,255,255,0.7);">Every Toothpencil purchased plants one tree. Zero plastic. Full circle.</p>
   <div class="impact-grid">
     <div class="impact-stat">
       <div class="num">1B+</div>
-      <div class="label">Plastic toothbrushes enter US landfills every year</div>
+      <div class="label">Plastic toothbrushes enter US landfills annually</div>
     </div>
     <div class="impact-stat">
       <div class="num">0</div>
@@ -599,112 +657,114 @@ footer a { color: var(--forest); text-decoration: none; }
     </div>
     <div class="impact-stat">
       <div class="num">1:1</div>
-      <div class="label">Every brush purchased plants one tree</div>
+      <div class="label">Every stick purchased plants one tree</div>
     </div>
   </div>
 </section>
 
-<!-- The Story -->
-<section class="section-full story">
-  <div class="section" style="padding-top: 0; padding-bottom: 0;">
-    <h2>The General Pencil Story ✏️</h2>
-    <div class="story-content">
-      <p>In Jersey City, New Jersey, there's a factory that's been making pencils since 1889. Five generations. One of the last pencil factories in America.</p>
-      <div class="highlight">"What if we took a pencil factory and made it save the planet?"</div>
-      <p>General Pencil Company already knows how to shape cedar into perfect hexagons, lacquer them in that iconic yellow, and ship them to hands that want to create something. We just asked them to point those pencils at a different kind of canvas — your teeth.</p>
-      <p>Same cedar. Same craft. Same American factory. But now, instead of writing on paper, you're writing a better future — one brush at a time.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Pricing -->
+<!-- PRICING -->
 <section class="section">
-  <h2>Pick Your Pencil 🦷✏️</h2>
-  <p class="section-subtitle">Every option plants trees. Every option is plastic-free. The only question is how sharp you want your smile.</p>
-
+  <h2>Pick Your Pencil &#x1F9B7;&#x270F;&#xFE0F;</h2>
+  <p class="section-subtitle">Every option plants trees. Every option is zero plastic. Every option is 100% natural miswak.</p>
   <div class="pricing-grid">
     <div class="price-card">
-      <div class="emoji">✏️</div>
+      <div class="emoji">&#x270F;&#xFE0F;</div>
       <h3>The Single</h3>
       <div class="price">$4.99</div>
       <div class="per">one toothpencil</div>
       <ul class="features">
-        <li>1 charcoal Toothpencil</li>
+        <li>1 charcoal miswak pencil</li>
         <li>Kraft paper packaging</li>
         <li>Plantable seed card</li>
         <li>1 tree planted</li>
+        <li>No toothpaste needed</li>
       </ul>
-      <a href="#waitlist" class="cta-btn" style="font-size: 0.75rem; padding: 12px 28px;">GET ONE</a>
+      <a href="#waitlist" class="cta-btn" style="font-size:0.75rem;padding:12px 28px;">GET ONE</a>
     </div>
-
     <div class="price-card featured">
-      <div class="emoji">✏️✏️✏️</div>
+      <div class="emoji">&#x270F;&#xFE0F;&#x270F;&#xFE0F;&#x270F;&#xFE0F;</div>
       <h3>The Pencil Case</h3>
       <div class="price">$11.99</div>
-      <div class="per">3-pack · $4.00 each</div>
+      <div class="per">3-pack &middot; $4.00 each</div>
       <ul class="features">
-        <li>3 charcoal Toothpencils</li>
+        <li>3 charcoal miswak pencils</li>
         <li>Family or roommate pack</li>
-        <li>Gift-ready box</li>
+        <li>Gift-ready kraft box</li>
         <li>3 trees planted</li>
+        <li>Free miswak guide card</li>
       </ul>
-      <a href="#waitlist" class="cta-btn" style="font-size: 0.75rem; padding: 12px 28px;">BEST VALUE</a>
+      <a href="#waitlist" class="cta-btn" style="font-size:0.75rem;padding:12px 28px;">BEST VALUE</a>
     </div>
-
     <div class="price-card">
-      <div class="emoji">📦</div>
+      <div class="emoji">&#x1F4E6;</div>
       <h3>The Annual</h3>
       <div class="price">$39.99</div>
-      <div class="per">4 brushes/year · $2.50/quarter</div>
+      <div class="per">quarterly delivery &middot; $2.50/qtr</div>
       <ul class="features">
-        <li>New Toothpencil every 3 months</li>
+        <li>New toothpencil every 4 weeks</li>
         <li>Seasonal editions</li>
-        <li>Free shipping</li>
-        <li>4 trees planted/year</li>
+        <li>Free shipping always</li>
+        <li>12 trees planted/year</li>
         <li>Wooden pencil cup holder</li>
       </ul>
-      <a href="#waitlist" class="cta-btn-mint cta-btn" style="font-size: 0.75rem; padding: 12px 28px;">SUBSCRIBE</a>
+      <a href="#waitlist" class="cta-btn cta-btn-green" style="font-size:0.75rem;padding:12px 28px;">SUBSCRIBE</a>
     </div>
   </div>
 </section>
 
-<!-- Waitlist -->
-<section id="waitlist" class="section-full waitlist">
-  <div class="section" style="padding-top: 0; padding-bottom: 0;">
-    <h2>Get on the List 🦷✏️</h2>
-    <p class="section-subtitle" style="color: rgba(255,255,255,0.6);">Be the first to sharpen your smile. Early supporters get launch pricing and a limited-edition Toothpencil.</p>
+<!-- BRAND VOICE / TAGLINES -->
+<div class="section-full" style="background:var(--white);">
+  <section class="section" style="padding-top:0;padding-bottom:0;">
+    <h2>&#x270F;&#xFE0F; The Sharpest Toothbrush You&rsquo;ve Ever Seen</h2>
+    <p class="section-subtitle">Don&rsquo;t chew on your pencil. Brush with it.</p>
+    <div class="brand-taglines">
+      <div class="tagline-pill big">Sharpen Your Smile &#x1F9B7;&#x270F;&#xFE0F;</div>
+      <div class="tagline-pill">Don&rsquo;t Chew On Your Pencil. Brush With It.</div>
+      <div class="tagline-pill">Made From Trees. Returns to Trees. &#x1F333;</div>
+      <div class="tagline-pill">1 Brush = 1 Tree</div>
+      <div class="tagline-pill">The #2 Toothbrush. (But Our #1 Product.)</div>
+      <div class="tagline-pill">Zero Plastic. Full Marks.</div>
+      <div class="tagline-pill" style="grid-column:span 2; background:var(--charcoal); color:var(--mint); border-color:var(--charcoal);">Your Toothbrush Will Outlive Your Grandchildren. Ours Won&rsquo;t. &#x1F331;</div>
+    </div>
+  </section>
+</div>
 
+<!-- WAITLIST -->
+<section id="waitlist" class="section-full waitlist">
+  <div class="section" style="padding-top:0;padding-bottom:0;">
+    <h2>Get on the List &#x1F9B7;&#x270F;&#xFE0F;</h2>
+    <p class="section-subtitle" style="color:rgba(255,255,255,0.6);">Be the first to sharpen your smile. Early supporters get launch pricing and a limited-edition Toothpencil.</p>
     <form class="waitlist-form" onsubmit="handleSubmit(event)">
       <input type="email" placeholder="your@email.com" required id="email-input">
-      <button type="submit">SHARPEN UP ✏️</button>
+      <button type="submit">SHARPEN UP &#x270F;&#xFE0F;</button>
     </form>
-    <div class="waitlist-note" id="waitlist-note">No spam. Just pencils for your teeth. 🦷✏️</div>
+    <div class="waitlist-note" id="waitlist-note">No spam. Just pencils for your teeth. &#x1F9B7;&#x270F;&#xFE0F;</div>
   </div>
 </section>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer>
-  <div class="emoji">🦷✏️</div>
-  <p><strong>TOOTHPENCIL</strong> — Sharpen Your Smile</p>
-  <p style="margin-top: 8px;">Founded by <a href="#">Elliot Roth</a> · Made with 🌳 in Jersey City</p>
-  <p style="margin-top: 8px;">
-    <a href="https://instagram.com/toothpencil">Instagram</a> ·
-    <a href="https://tiktok.com/@toothpencil">TikTok</a> ·
-    <a href="https://twitter.com/toothpencil">Twitter</a>
+  <div style="font-size:2rem;margin-bottom:10px;">&#x1F9B7;&#x270F;&#xFE0F;</div>
+  <p><strong>TOOTHPENCIL</strong> &mdash; Sharpen Your Smile</p>
+  <p style="margin-top:8px;">Founded by <a href="#">Elliot Roth</a> &middot; Made with &#x1F333; in America &middot; Miswak sourced from West Africa</p>
+  <p style="margin-top:8px;">
+    <a href="https://instagram.com/toothpencil">Instagram</a> &middot;
+    <a href="https://tiktok.com/@toothpencil">TikTok</a> &middot;
+    <a href="https://twitter.com/toothpencil">Twitter/X</a>
   </p>
-  <p style="margin-top: 15px;">&copy; 2026 Toothpencil. All rights reserved. 1 brush = 1 tree.</p>
+  <p style="margin-top:15px;">&copy; 2026 Toothpencil. All rights reserved. 1 stick = 1 tree.</p>
 </footer>
 
 <script>
 function handleSubmit(e) {
   e.preventDefault();
-  const email = document.getElementById('email-input').value;
-  const note = document.getElementById('waitlist-note');
-  note.textContent = '🎉 You\'re on the list! Welcome to the pencil case, ' + email.split('@')[0] + '. 🦷✏️';
-  note.style.color = 'var(--mint)';
+  var email = document.getElementById('email-input').value;
+  var note = document.getElementById('waitlist-note');
+  note.textContent = '&#x1F389; You\'re on the list! Welcome to the pencil case, ' + email.split('@')[0] + '. &#x1F9B7;&#x270F;&#xFE0F;';
+  note.style.color = '#98FB98';
   note.style.fontSize = '1rem';
   document.getElementById('email-input').value = '';
-  document.getElementById('email-input').placeholder = 'Added! 🎉';
+  document.getElementById('email-input').placeholder = 'Added! &#x1F389;';
 }
 </script>
 
