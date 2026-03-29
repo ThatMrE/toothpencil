@@ -38,7 +38,7 @@ body {
 .ticker-wrap {
   background: var(--charcoal);
   overflow: hidden;
-  padding: 10px 0;
+  padding: 10px 0; margin-top: 52px;
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
@@ -493,6 +493,18 @@ footer a { color: var(--forest); text-decoration: none; }
 </style>
 </head>
 <body>
+
+<!-- Site Nav -->
+<div style="position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(45,45,45,0.95);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2.5rem;border-bottom:1px solid rgba(255,215,0,0.15);">
+  <a href="index.html" style="font-family:'Space Mono',monospace;font-size:0.85rem;font-weight:700;color:#FFD700;letter-spacing:0.08em;">&#x1F9B7;&#x270F;&#xFE0F; TOOTHPENCIL</a>
+  <div style="display:flex;gap:2rem;align-items:center;">
+    <a href="brand-package.html" style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);transition:color 0.2s;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Brand</a>
+    <a href="business-plan.html" style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);transition:color 0.2s;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Business Plan</a>
+    <a href="financials.html" style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);transition:color 0.2s;" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Financials</a>
+    <a href="#waitlist" style="background:#FFD700;color:#2D2D2D;padding:0.5rem 1.25rem;font-family:'Space Mono',monospace;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">Join Waitlist</a>
+  </div>
+</div>
+
 
 <!-- TICKER -->
 <div class="ticker-wrap">

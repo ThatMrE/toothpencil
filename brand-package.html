@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toothpencil 🦷✏️ Brand Package</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --charcoal: #2D2D2D;
+  --pencil-yellow: #FFD700;
+  --mint: #98FB98;
+  --kraft: #D2B48C;
+  --kraft-light: #F5E6D0;
+  --white: #FAFAF8;
+  --tooth-white: #F8F6F0;
+  --eraser-pink: #FFB6C1;
+  --forest: #2E5E3F;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--kraft-light);
+  color: var(--charcoal);
+  line-height: 1.6;
+}
+
+.section {
+  padding: 80px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 { font-family: 'Caveat', cursive; font-size: 4rem; }
+h2 { font-family: 'Caveat', cursive; font-size: 2.8rem; margin-bottom: 30px; }
+h3 { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.3rem; margin-bottom: 15px; }
+
+.hero {
+  background: var(--charcoal);
+  color: var(--white);
+  text-align: center;
+  padding: 100px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero h1 {
+  font-size: 6rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+.hero .emoji-sig { font-size: 3rem; margin-bottom: 20px; }
+.hero .subtitle {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.1rem;
+  color: var(--pencil-yellow);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.hero .tagline {
+  font-family: 'Caveat', cursive;
+  font-size: 2.5rem;
+  color: var(--mint);
+  margin-top: 30px;
+}
+
+/* Logo Section */
+.logos { background: var(--white); }
+.logo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.logo-card {
+  background: var(--kraft-light);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  border: 2px solid var(--kraft);
+}
+
+.logo-card.dark {
+  background: var(--charcoal);
+  color: var(--white);
+  border-color: var(--charcoal);
+}
+
+.logo-card h4 {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 20px;
+  color: var(--forest);
+}
+
+.logo-card.dark h4 { color: var(--mint); }
+
+.logo-card svg { max-width: 300px; margin: 0 auto; display: block; }
+
+/* Colors */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.color-swatch {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid rgba(0,0,0,0.08);
+}
+
+.swatch-block {
+  height: 120px;
+  display: flex;
+  align-items: flex-end;
+  padding: 12px;
+}
+
+.swatch-info {
+  padding: 16px;
+  background: var(--white);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+}
+
+.swatch-info .name { font-weight: 700; margin-bottom: 4px; font-family: 'Inter', sans-serif; }
+
+/* Typography */
+.type-showcase {
+  margin-top: 30px;
+}
+
+.type-row {
+  padding: 30px;
+  border-bottom: 1px solid var(--kraft);
+}
+
+.type-row .font-name {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--forest);
+  margin-bottom: 10px;
+}
+
+.type-display { font-family: 'Caveat', cursive; font-size: 3rem; }
+.type-body { font-family: 'Inter', sans-serif; font-size: 1.1rem; line-height: 1.8; }
+.type-mono { font-family: 'Space Mono', monospace; font-size: 1rem; }
+
+/* Taglines */
+.tagline-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.tagline-card {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 16px;
+  border: 2px solid var(--kraft);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tagline-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.tagline-card .text {
+  font-family: 'Caveat', cursive;
+  font-size: 1.8rem;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.tagline-card .context {
+  font-size: 0.8rem;
+  color: #888;
+  font-family: 'Space Mono', monospace;
+}
+
+.tagline-card.featured {
+  background: var(--charcoal);
+  color: var(--white);
+  border-color: var(--charcoal);
+  grid-column: span 2;
+}
+
+.tagline-card.featured .text {
+  font-size: 2.5rem;
+  color: var(--pencil-yellow);
+}
+
+.tagline-card.featured .context { color: var(--mint); }
+
+/* Voice */
+.voice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.voice-card {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 16px;
+  border-left: 4px solid var(--pencil-yellow);
+}
+
+.voice-card h4 {
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.do-dont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.do-col, .dont-col {
+  padding: 30px;
+  border-radius: 16px;
+}
+
+.do-col { background: #E8F5E9; border: 2px solid var(--forest); }
+.dont-col { background: #FFF3E0; border: 2px solid #E65100; }
+
+.do-col h4 { color: var(--forest); }
+.dont-col h4 { color: #E65100; }
+
+.do-col li, .dont-col li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+/* Mockups */
+.mockup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.mockup-card {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid var(--kraft);
+  background: var(--white);
+}
+
+.mockup-visual {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  position: relative;
+}
+
+.mockup-info {
+  padding: 20px;
+  border-top: 2px solid var(--kraft);
+}
+
+.mockup-info h4 { font-family: 'Caveat', cursive; font-size: 1.4rem; margin-bottom: 5px; }
+.mockup-info p { font-size: 0.85rem; color: #666; }
+
+/* Instagram */
+.ig-visual {
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+  color: white;
+  flex-direction: column;
+  text-align: center;
+}
+
+.ig-visual .handle { font-family: 'Space Mono', monospace; font-size: 0.9rem; opacity: 0.9; }
+.ig-visual .post-text { font-family: 'Caveat', cursive; font-size: 2rem; margin-top: 15px; }
+
+/* Billboard */
+.billboard-visual {
+  background: var(--charcoal);
+  color: var(--pencil-yellow);
+  flex-direction: column;
+}
+
+.billboard-visual .headline { font-family: 'Caveat', cursive; font-size: 2.2rem; text-align: center; }
+.billboard-visual .sub { color: var(--mint); font-size: 0.9rem; margin-top: 10px; font-family: 'Space Mono', monospace; }
+
+/* Packaging */
+.packaging-visual {
+  background: var(--kraft);
+  flex-direction: column;
+}
+
+/* Ad Campaign */
+.campaign-section { background: var(--charcoal); color: var(--white); }
+.campaign-section h2 { color: var(--pencil-yellow); }
+
+.campaign-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.campaign-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.campaign-card h4 {
+  font-family: 'Caveat', cursive;
+  font-size: 2rem;
+  color: var(--pencil-yellow);
+  margin-bottom: 15px;
+}
+
+.campaign-card p { color: rgba(255,255,255,0.8); line-height: 1.7; }
+
+/* Social handles */
+.handles {
+  background: var(--forest);
+  color: var(--white);
+  text-align: center;
+  padding: 60px 40px;
+}
+
+.handles h2 { color: var(--mint); }
+
+.handle-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.handle-badge {
+  background: rgba(255,255,255,0.1);
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+}
+
+/* Footer */
+.footer {
+  background: var(--charcoal);
+  color: var(--white);
+  text-align: center;
+  padding: 60px 40px;
+}
+
+.footer .emoji-big { font-size: 4rem; margin-bottom: 20px; }
+.footer h2 { color: var(--pencil-yellow); margin-bottom: 10px; }
+.footer p { color: rgba(255,255,255,0.6); font-family: 'Space Mono', monospace; font-size: 0.85rem; }
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 3.5rem; }
+  .logo-grid, .color-grid, .tagline-grid, .voice-grid, .mockup-grid, .campaign-grid, .do-dont {
+    grid-template-columns: 1fr;
+  }
+  .tagline-card.featured { grid-column: span 1; }
+  .section { padding: 50px 20px; }
+}
+</style>
+</head>
+<body>
+<div style="position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(45,45,45,0.97);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2.5rem;border-bottom:1px solid rgba(255,215,0,0.15);">
+  <a href="index.html" style="font-family:&apos;Space Mono&apos;,monospace;font-size:0.85rem;font-weight:700;color:#FFD700;letter-spacing:0.08em;">&#x1F9B7;&#x270F;&#xFE0F; TOOTHPENCIL</a>
+  <div style="display:flex;gap:2rem;align-items:center;">
+    <a href="index.html" style="font-family:&apos;Space Mono&apos;,monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);">Home</a>
+    <a href="brand-package.html" style="font-family:&apos;Space Mono&apos;,monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);">Brand</a>
+    <a href="business-plan.html" style="font-family:&apos;Space Mono&apos;,monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);">Business Plan</a>
+    <a href="financials.html" style="font-family:&apos;Space Mono&apos;,monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);">Financials</a>
+  </div>
+</div>
+<div style="height:52px;"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="emoji-sig">🦷✏️</div>
+  <h1>TOOTHPENCIL</h1>
+  <div class="subtitle">Brand Identity Package</div>
+  <div class="tagline">Sharpen Your Smile</div>
+</div>
+
+<!-- LOGOS -->
+<div class="section logos">
+  <h2>🦷✏️ Logo Concepts</h2>
+  <p>Four SVG logo directions — from clean wordmark to playful pencil-tooth fusion mark. All optimized for digital and print at any scale.</p>
+
+  <div class="logo-grid">
+    <!-- Logo 1: Clean Wordmark -->
+    <div class="logo-card">
+      <h4>01 — Clean Wordmark</h4>
+      <svg viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="35" width="8" height="35" rx="2" fill="#FFD700"/>
+        <rect x="0" y="35" width="8" height="10" fill="#FFB6C1"/>
+        <polygon points="0,70 4,80 8,70" fill="#2D2D2D"/>
+        <text x="20" y="68" font-family="'Caveat', cursive" font-size="42" font-weight="700" fill="#2D2D2D">TOOTHPENCIL</text>
+        <text x="20" y="85" font-family="'Space Mono', monospace" font-size="9" letter-spacing="4" fill="#2E5E3F">SHARPEN YOUR SMILE</text>
+      </svg>
+    </div>
+
+    <!-- Logo 2: Pencil-Tooth Fusion -->
+    <div class="logo-card dark">
+      <h4>02 — Fusion Mark</h4>
+      <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(130, 5)">
+          <!-- Tooth shape with pencil body -->
+          <path d="M40,0 C55,-2 65,5 70,15 C80,35 85,65 75,85 C72,92 65,95 60,85 C55,75 50,78 45,85 C40,95 33,92 30,85 C20,65 25,35 35,15 C38,8 30,-2 40,0Z" fill="#F8F6F0" stroke="#2D2D2D" stroke-width="2"/>
+          <!-- Pencil band -->
+          <rect x="32" y="20" width="42" height="8" rx="2" fill="#FFD700"/>
+          <rect x="32" y="28" width="42" height="4" rx="1" fill="#2D2D2D"/>
+          <!-- Pencil tip lines -->
+          <line x1="45" y1="60" x2="45" y2="75" stroke="#2D2D2D" stroke-width="1.5" opacity="0.3"/>
+          <line x1="55" y1="58" x2="55" y2="72" stroke="#2D2D2D" stroke-width="1.5" opacity="0.3"/>
+          <line x1="50" y1="55" x2="50" y2="78" stroke="#2D2D2D" stroke-width="1.5" opacity="0.3"/>
+        </g>
+        <text x="200" y="75" text-anchor="middle" font-family="'Caveat', cursive" font-size="28" font-weight="700" fill="#FAFAF8">TOOTHPENCIL</text>
+        <text x="200" y="95" text-anchor="middle" font-family="'Space Mono', monospace" font-size="7" letter-spacing="3" fill="#98FB98">SHARPEN YOUR SMILE 🦷✏️</text>
+      </svg>
+    </div>
+
+    <!-- Logo 3: Hex Badge -->
+    <div class="logo-card">
+      <h4>03 — Hex Badge (Pencil Cross-Section)</h4>
+      <svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(155, 5)">
+          <!-- Hexagon (pencil cross-section) -->
+          <polygon points="45,0 85,22 85,67 45,90 5,67 5,22" fill="#FFD700" stroke="#2D2D2D" stroke-width="3"/>
+          <!-- Inner circle (graphite core) -->
+          <circle cx="45" cy="45" r="20" fill="#2D2D2D"/>
+          <!-- Tooth icon in center -->
+          <path d="M38,32 C42,30 48,30 52,32 C58,36 60,45 57,55 C56,58 53,59 51,55 C49,51 48,52 46,55 C44,59 41,58 40,55 C37,45 35,36 38,32Z" fill="#F8F6F0"/>
+        </g>
+        <text x="200" y="118" text-anchor="middle" font-family="'Caveat', cursive" font-size="20" font-weight="700" fill="#2D2D2D">TOOTHPENCIL</text>
+      </svg>
+    </div>
+
+    <!-- Logo 4: Horizontal Pencil -->
+    <div class="logo-card dark">
+      <h4>04 — Horizontal Pencil Mark</h4>
+      <svg viewBox="0 0 400 90" xmlns="http://www.w3.org/2000/svg">
+        <!-- Pencil body -->
+        <rect x="40" y="30" width="250" height="25" rx="2" fill="#FFD700"/>
+        <!-- Eraser -->
+        <rect x="40" y="30" width="30" height="25" rx="2" fill="#FFB6C1"/>
+        <rect x="70" y="30" width="5" height="25" fill="#C0C0C0"/>
+        <!-- Ferrule band -->
+        <rect x="75" y="30" width="3" height="25" fill="#B0B0B0"/>
+        <!-- Pencil tip -->
+        <polygon points="290,30 320,42.5 290,55" fill="#D2B48C"/>
+        <polygon points="310,37 320,42.5 310,48" fill="#2D2D2D"/>
+        <!-- Bristles at tip -->
+        <g transform="translate(320, 30)">
+          <rect x="0" y="2" width="12" height="3" rx="1" fill="#F8F6F0"/>
+          <rect x="0" y="7" width="14" height="3" rx="1" fill="#F8F6F0"/>
+          <rect x="0" y="12" width="12" height="3" rx="1" fill="#F8F6F0"/>
+          <rect x="0" y="17" width="14" height="3" rx="1" fill="#F8F6F0"/>
+          <rect x="0" y="22" width="11" height="3" rx="1" fill="#F8F6F0"/>
+        </g>
+        <!-- Text on pencil body -->
+        <text x="170" y="48" text-anchor="middle" font-family="'Space Mono', monospace" font-size="11" font-weight="700" fill="#2D2D2D" letter-spacing="3">TOOTHPENCIL</text>
+        <!-- Tagline below -->
+        <text x="200" y="75" text-anchor="middle" font-family="'Caveat', cursive" font-size="16" fill="#98FB98">Sharpen Your Smile 🦷✏️</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- COLOR PALETTE -->
+<div class="section">
+  <h2>🎨 Color Palette</h2>
+  <p>Earthy, warm, and unmistakably Toothpencil. Inspired by cedar shavings, graphite marks, minty freshness, and craft paper bags.</p>
+
+  <div class="color-grid">
+    <div class="color-swatch">
+      <div class="swatch-block" style="background: #2D2D2D;">
+        <span style="color: white; font-family: 'Caveat', cursive; font-size: 1.2rem;">Charcoal</span>
+      </div>
+      <div class="swatch-info">
+        <div class="name">Graphite Core</div>
+        <div>#2D2D2D</div>
+        <div>RGB 45, 45, 45</div>
+      </div>
+    </div>
+
+    <div class="color-swatch">
+      <div class="swatch-block" style="background: #FFD700;">
+        <span style="color: #2D2D2D; font-family: 'Caveat', cursive; font-size: 1.2rem;">No. 2 Yellow</span>
+      </div>
+      <div class="swatch-info">
+        <div class="name">Pencil Yellow</div>
+        <div>#FFD700</div>
+        <div>RGB 255, 215, 0</div>
+      </div>
+    </div>
+
+    <div class="color-swatch">
+      <div class="swatch-block" style="background: #98FB98;">
+        <span style="color: #2D2D2D; font-family: 'Caveat', cursive; font-size: 1.2rem;">Fresh Mint</span>
+      </div>
+      <div class="swatch-info">
+        <div class="name">Mint Green</div>
+        <div>#98FB98</div>
+        <div>RGB 152, 251, 152</div>
+      </div>
+    </div>
+
+    <div class="color-swatch">
+      <div class="swatch-block" style="background: #D2B48C;">
+        <span style="color: #2D2D2D; font-family: 'Caveat', cursive; font-size: 1.2rem;">Kraft Paper</span>
+      </div>
+      <div class="swatch-info">
+        <div class="name">Kraft Cream</div>
+        <div>#D2B48C</div>
+        <div>RGB 210, 180, 140</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="color-grid" style="margin-top: 20px;">
+    <div class="color-swatch">
+      <div class="swatch-block" style="background: #F8F6F0;">
+        <span style="color: #2D2D2D; font-family: 'Caveat', cursive; font-size: 1.2rem;">Tooth White</span>
+      </div>
+      <div class="swatch-info">
+        <div class="name">Tooth White</div>
+        <div>#F8F6F0</div>
+        <div>RGB 248, 246, 240</div>
+      </div>
+    </div>
+
+    <div class="color-swatch">
+      <div class="swatch-block" style="background: #FFB6C1;">
+        <span style="color: #2D2D2D; font-family: 'Caveat', cursive; font-size: 1.2rem;">Eraser Pink</span>
+      </div>
+      <div class="swatch-info">
+        <div class="name">Eraser Pink</div>
+        <div>#FFB6C1</div>
+        <div>RGB 255, 182, 193</div>
+      </div>
+    </div>
+
+    <div class="color-swatch">
+      <div class="swatch-block" style="background: #2E5E3F;">
+        <span style="color: white; font-family: 'Caveat', cursive; font-size: 1.2rem;">Forest</span>
+      </div>
+      <div class="swatch-info">
+        <div class="name">Forest Green</div>
+        <div>#2E5E3F</div>
+        <div>RGB 46, 94, 63</div>
+      </div>
+    </div>
+
+    <div class="color-swatch">
+      <div class="swatch-block" style="background: #F5E6D0;">
+        <span style="color: #2D2D2D; font-family: 'Caveat', cursive; font-size: 1.2rem;">Parchment</span>
+      </div>
+      <div class="swatch-info">
+        <div class="name">Kraft Light</div>
+        <div>#F5E6D0</div>
+        <div>RGB 245, 230, 208</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TYPOGRAPHY -->
+<div class="section" style="background: var(--white);">
+  <h2>✏️ Typography</h2>
+  <p>A friendly hand-drawn feel meets clean readability. The type system balances warmth and professionalism — like a pencil sketch that grew up.</p>
+
+  <div class="type-showcase">
+    <div class="type-row">
+      <div class="font-name">Display / Headlines — Caveat</div>
+      <div class="type-display">Sharpen Your Smile 🦷✏️</div>
+      <div class="type-display" style="font-size: 2rem; color: var(--forest);">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+      <div class="type-display" style="font-size: 2rem;">abcdefghijklmnopqrstuvwxyz 0123456789</div>
+    </div>
+    <div class="type-row">
+      <div class="font-name">Body / UI — Inter</div>
+      <div class="type-body">The world's first charcoal toothbrush shaped like a pencil. Fully biodegradable. Plants trees. Makes your bathroom counter 100% more fun. <strong>Bold for emphasis.</strong></div>
+    </div>
+    <div class="type-row">
+      <div class="font-name">Accent / Data / Labels — Space Mono</div>
+      <div class="type-mono">1 BRUSH = 1 TREE | ZERO PLASTIC | 100% BIODEGRADABLE</div>
+    </div>
+  </div>
+</div>
+
+<!-- BRAND VOICE -->
+<div class="section">
+  <h2>🗣️ Brand Voice</h2>
+  <p>Toothpencil speaks like your funniest friend who also happens to care deeply about the planet. We're quirky, punny, warm, and eco-positive — never preachy, never boring.</p>
+
+  <div class="voice-grid">
+    <div class="voice-card">
+      <h4>😄 Quirky</h4>
+      <p>We're a toothbrush shaped like a pencil. Our entire existence is quirky. We lean into the absurdity and make people smile before they even start brushing.</p>
+    </div>
+    <div class="voice-card">
+      <h4>🤣 Punny</h4>
+      <p>We love wordplay. Pencil puns, tooth puns, school supply humor. If there's a pun to be made, we've already made it. "Sharpen Your Smile" is just the beginning.</p>
+    </div>
+    <div class="voice-card">
+      <h4>🌱 Eco-Positive</h4>
+      <p>We don't guilt-trip. We celebrate. Every brush is a tiny party for the planet. We talk about what we're planting, not what others are destroying.</p>
+    </div>
+    <div class="voice-card">
+      <h4>🤗 Warm</h4>
+      <p>We're inviting, inclusive, and approachable. Like finding a hand-written note in your lunchbox. We make sustainability feel like a hug, not a lecture.</p>
+    </div>
+  </div>
+
+  <div class="do-dont">
+    <div class="do-col">
+      <h4>✅ We Say</h4>
+      <ul>
+        <li>"Your smile just got a little sharper 🦷✏️"</li>
+        <li>"One brush, one tree. That's the deal."</li>
+        <li>"Made from trees. Returns to trees."</li>
+        <li>"Welcome to the pencil case, friend."</li>
+        <li>"Brush hour: the best 2 minutes of your day."</li>
+      </ul>
+    </div>
+    <div class="dont-col">
+      <h4>❌ We Don't Say</h4>
+      <ul>
+        <li>"Plastic toothbrushes are killing the planet."</li>
+        <li>"If you don't switch, you're part of the problem."</li>
+        <li>"Revolutionary disruption of the oral care space."</li>
+        <li>"Leverage synergies in the sustainability vertical."</li>
+        <li>"Act now before it's too late!"</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- TAGLINES -->
+<div class="section" style="background: var(--white);">
+  <h2>💬 Taglines & Copy Lines</h2>
+
+  <div class="tagline-grid">
+    <div class="tagline-card featured">
+      <div class="text">Sharpen Your Smile</div>
+      <div class="context">Primary tagline — hero, packaging, everywhere</div>
+    </div>
+
+    <div class="tagline-card">
+      <div class="text">Don't Chew On Your Pencil. Brush With It.</div>
+      <div class="context">Campaign headline</div>
+    </div>
+    <div class="tagline-card">
+      <div class="text">The World's First Pencil You Brush Your Teeth With.</div>
+      <div class="context">Product descriptor</div>
+    </div>
+
+    <div class="tagline-card">
+      <div class="text">Made From Trees. Returns to Trees. 🌳</div>
+      <div class="context">Sustainability messaging</div>
+    </div>
+    <div class="tagline-card">
+      <div class="text">1 Brush = 1 Tree</div>
+      <div class="context">Impact tagline</div>
+    </div>
+
+    <div class="tagline-card">
+      <div class="text">Write Your Smile Story</div>
+      <div class="context">Subscription CTA</div>
+    </div>
+    <div class="tagline-card">
+      <div class="text">Pencils Made of Teeth</div>
+      <div class="context">Absurdist campaign hook</div>
+    </div>
+
+    <div class="tagline-card">
+      <div class="text">The #2 Toothbrush. (But Our #1 Product.)</div>
+      <div class="context">Pencil pun / hero copy</div>
+    </div>
+    <div class="tagline-card">
+      <div class="text">Zero Plastic. Full Marks.</div>
+      <div class="context">Eco messaging</div>
+    </div>
+
+    <div class="tagline-card">
+      <div class="text">A+ Oral Care 🦷✏️</div>
+      <div class="context">Social / casual</div>
+    </div>
+    <div class="tagline-card">
+      <div class="text">Top of the Class in Clean</div>
+      <div class="context">School supply theme</div>
+    </div>
+
+    <div class="tagline-card">
+      <div class="text">Sketch a Better Morning</div>
+      <div class="context">Lifestyle / wellness angle</div>
+    </div>
+    <div class="tagline-card">
+      <div class="text">No Erasers Needed. This Brush Gets It Right.</div>
+      <div class="context">Product confidence line</div>
+    </div>
+
+    <div class="tagline-card featured">
+      <div class="text">Your Toothbrush Will Outlive Your Grandchildren. Ours Won't. 🌱</div>
+      <div class="context">Hard-hitting eco fact — billboard / long-form</div>
+    </div>
+
+    <div class="tagline-card">
+      <div class="text">Brush Like You Mean It ✏️</div>
+      <div class="context">Energetic / social CTA</div>
+    </div>
+    <div class="tagline-card">
+      <div class="text">The Sharpest Thing in Your Bathroom</div>
+      <div class="context">Wit-forward headline</div>
+    </div>
+  </div>
+</div>
+
+<!-- AD CAMPAIGNS -->
+<div class="section campaign-section">
+  <h2>📢 Ad Campaign Concepts</h2>
+  <p style="color: rgba(255,255,255,0.7);">From absurdist humor to earnest eco-messaging — campaigns that make people stop, laugh, and switch.</p>
+
+  <div class="campaign-grid">
+    <div class="campaign-card" style="grid-column: span 2;">
+      <h4>🦷 "Pencils Made of Teeth" — Absurdist Campaign</h4>
+      <p>A fake documentary exploring the "discovery" that pencils are made of teeth. Museum exhibits. Academic experts. Dental conspiracy theories. Then the twist: "Actually, we did the opposite. We made a toothbrush out of a pencil." Cut to product shot with a wink.</p>
+      <p style="margin-top: 15px; color: var(--mint);">Formats: TikTok series (6 episodes), YouTube pre-roll, Instagram Reels, billboard teasers ("PENCILS MADE OF TEETH?" → reveal)</p>
+    </div>
+
+    <div class="campaign-card">
+      <h4>📚 "School Supplies" — Back to School</h4>
+      <p>Toothpencil shows up in pencil cases, desk organizers, and school supply lists. "The only school supply that fights cavities." Seasonal Q3 campaign aligned with back-to-school shopping.</p>
+      <p style="margin-top: 15px; color: var(--mint);">Formats: Social, retail POP, Target endcap</p>
+    </div>
+
+    <div class="campaign-card">
+      <h4>🌍 "Outlive" — Eco Impact</h4>
+      <p>Side-by-side: your plastic toothbrush in 2426 (still in a landfill) vs. your Toothpencil in 2027 (already a tree). Stark. Simple. Shareable.</p>
+      <p style="margin-top: 15px; color: var(--mint);">Formats: Billboard, transit ads, print</p>
+    </div>
+
+    <div class="campaign-card">
+      <h4>🎬 "Morning Edit" — Lifestyle</h4>
+      <p>Beautiful morning routines — but the toothbrush is a pencil. Coffee, stretch, brush with a pencil. "Wait, what?" Aspirational aesthetic meets double-take humor. Targets wellness/lifestyle audience.</p>
+      <p style="margin-top: 15px; color: var(--mint);">Formats: TikTok, Pinterest, Instagram</p>
+    </div>
+
+    <div class="campaign-card">
+      <h4>🏭 "Made in America" — Factory Story</h4>
+      <p>Behind-the-scenes at General Pencil Company. 5th generation, last pencil factory in America, now making the future of toothbrushes. Craft, heritage, and innovation in Jersey City.</p>
+      <p style="margin-top: 15px; color: var(--mint);">Formats: Long-form video, PR, editorial</p>
+    </div>
+
+    <div class="campaign-card">
+      <h4>✏️ "Sharp Reviews" — UGC</h4>
+      <p>Customers rate their brushing experience with letter grades. "A+ for making me feel like a kindergartener again." "B+ because my roommate keeps stealing it." Authentic, funny, shareable.</p>
+      <p style="margin-top: 15px; color: var(--mint);">Formats: Social carousel, email, website</p>
+    </div>
+  </div>
+</div>
+
+<!-- MOCKUPS -->
+<div class="section">
+  <h2>📱 Mockups & Applications</h2>
+
+  <div class="mockup-grid">
+    <!-- Instagram Post -->
+    <div class="mockup-card">
+      <div class="mockup-visual ig-visual">
+        <div class="handle">@toothpencil</div>
+        <div class="post-text">Don't chew on your pencil.<br>Brush with it. 🦷✏️</div>
+        <div style="margin-top: 15px; font-size: 0.8rem; opacity: 0.8;">❤️ 4,832 likes</div>
+      </div>
+      <div class="mockup-info">
+        <h4>Instagram Post</h4>
+        <p>Feed post — campaign launch announcement with product hero shot on kraft paper background.</p>
+      </div>
+    </div>
+
+    <!-- Billboard -->
+    <div class="mockup-card">
+      <div class="mockup-visual billboard-visual">
+        <div class="headline">PENCILS<br>MADE OF<br>TEETH?</div>
+        <div class="sub">toothpencil.com 🦷✏️</div>
+      </div>
+      <div class="mockup-info">
+        <h4>Billboard — Teaser</h4>
+        <p>Phase 1 teaser billboard. Cryptic, intriguing. QR code to toothpencil.com. Reveal campaign follows 2 weeks later.</p>
+      </div>
+    </div>
+
+    <!-- Packaging -->
+    <div class="mockup-card">
+      <div class="mockup-visual packaging-visual">
+        <svg viewBox="0 0 160 200" width="120">
+          <!-- Box -->
+          <rect x="10" y="10" width="140" height="180" rx="8" fill="#F5E6D0" stroke="#2D2D2D" stroke-width="2"/>
+          <!-- Pencil slot -->
+          <rect x="55" y="30" width="50" height="130" rx="4" fill="#D2B48C" stroke="#2D2D2D" stroke-width="1"/>
+          <!-- Pencil product -->
+          <rect x="62" y="35" width="36" height="100" rx="2" fill="#FFD700"/>
+          <rect x="62" y="35" width="36" height="20" rx="2" fill="#FFB6C1"/>
+          <polygon points="62,135 80,155 98,135" fill="#D2B48C"/>
+          <polygon points="72,145 80,155 88,145" fill="#2D2D2D"/>
+          <!-- Bristles -->
+          <rect x="67" y="155" width="26" height="8" rx="3" fill="#F8F6F0" stroke="#ccc" stroke-width="0.5"/>
+          <!-- Brand text -->
+          <text x="80" y="178" text-anchor="middle" font-family="'Caveat', cursive" font-size="12" fill="#2D2D2D" font-weight="700">TOOTHPENCIL</text>
+          <text x="80" y="190" text-anchor="middle" font-family="'Space Mono', monospace" font-size="4" fill="#2E5E3F">🦷✏️ SHARPEN YOUR SMILE</text>
+        </svg>
+      </div>
+      <div class="mockup-info">
+        <h4>Product Packaging</h4>
+        <p>Kraft paper box with pencil slot. FSC-certified, soy ink. Includes plantable seed paper card inside.</p>
+      </div>
+    </div>
+
+    <!-- TikTok -->
+    <div class="mockup-card">
+      <div class="mockup-visual" style="background: #000; color: white; flex-direction: column; text-align: center;">
+        <div style="font-size: 0.7rem; opacity: 0.6; margin-bottom: 10px;">♪ original sound - @toothpencil</div>
+        <div style="font-family: 'Caveat', cursive; font-size: 1.8rem;">POV: You find a pencil in your bathroom</div>
+        <div style="margin-top: 15px; background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 20px; font-size: 0.8rem;">🦷✏️ 1.2M views</div>
+      </div>
+      <div class="mockup-info">
+        <h4>TikTok — "Wait What?" Series</h4>
+        <p>Short-form content series. Product reveal format optimized for FYP algorithm.</p>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="mockup-card">
+      <div class="mockup-visual" style="background: var(--tooth-white); flex-direction: column; text-align: left; padding: 30px;">
+        <div style="font-family: 'Space Mono', monospace; font-size: 0.65rem; color: #999; margin-bottom: 5px;">FROM: hello@toothpencil.com</div>
+        <div style="font-family: 'Space Mono', monospace; font-size: 0.65rem; color: #999; margin-bottom: 15px;">SUBJ: Your Pencil Case is on its way 🦷✏️</div>
+        <div style="font-family: 'Caveat', cursive; font-size: 1.6rem; margin-bottom: 10px;">Hey, sharpie!</div>
+        <div style="font-size: 0.85rem; line-height: 1.6;">Your quarterly Toothpencil is packed and shipping today. This season's edition: <strong>Winter Peppermint</strong>. Your bathroom is about to get a whole lot fresher.</div>
+      </div>
+      <div class="mockup-info">
+        <h4>Subscription Email</h4>
+        <p>Quarterly shipping notification. Warm, playful, on-brand. Drives anticipation for seasonal editions.</p>
+      </div>
+    </div>
+
+    <!-- Product Shot -->
+    <div class="mockup-card">
+      <div class="mockup-visual" style="background: linear-gradient(135deg, var(--kraft-light), var(--kraft)); flex-direction: column;">
+        <svg viewBox="0 0 200 180" width="180">
+          <!-- Multiple pencils in a cup -->
+          <ellipse cx="100" cy="150" rx="50" ry="15" fill="#D2B48C" stroke="#2D2D2D" stroke-width="1.5"/>
+          <rect x="50" y="100" width="100" height="50" rx="5" fill="#8B7355" stroke="#2D2D2D" stroke-width="1.5"/>
+          <ellipse cx="100" cy="100" rx="50" ry="15" fill="#A0855C" stroke="#2D2D2D" stroke-width="1.5"/>
+          <!-- Pencil toothbrushes -->
+          <g transform="rotate(-10, 80, 50)">
+            <rect x="72" y="10" width="16" height="80" rx="2" fill="#FFD700"/>
+            <rect x="72" y="10" width="16" height="15" rx="2" fill="#FFB6C1"/>
+            <rect x="72" y="90" width="16" height="10" rx="3" fill="#F8F6F0"/>
+          </g>
+          <g transform="rotate(5, 110, 50)">
+            <rect x="102" y="5" width="16" height="85" rx="2" fill="#FFD700"/>
+            <rect x="102" y="5" width="16" height="15" rx="2" fill="#FFB6C1"/>
+            <rect x="102" y="90" width="16" height="10" rx="3" fill="#F8F6F0"/>
+          </g>
+          <g transform="rotate(15, 130, 55)">
+            <rect x="122" y="15" width="16" height="75" rx="2" fill="#98FB98"/>
+            <rect x="122" y="15" width="16" height="15" rx="2" fill="#FFB6C1"/>
+            <rect x="122" y="90" width="16" height="10" rx="3" fill="#F8F6F0"/>
+          </g>
+          <!-- Text -->
+          <text x="100" y="175" text-anchor="middle" font-family="'Space Mono', monospace" font-size="6" fill="#2D2D2D">THE PENCIL CASE — 3 PACK</text>
+        </svg>
+      </div>
+      <div class="mockup-info">
+        <h4>Product — Pencil Cup Display</h4>
+        <p>Lifestyle product photography concept. Toothpencils in a reclaimed wood pencil cup. Seasonal colors.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SOCIAL HANDLES -->
+<div class="handles">
+  <h2>📱 Social Handles</h2>
+  <p style="opacity: 0.8; margin-bottom: 10px;">Consistent @toothpencil everywhere. Emoji signature: 🦷✏️</p>
+
+  <div class="handle-grid">
+    <div class="handle-badge">📸 @toothpencil</div>
+    <div class="handle-badge">🎵 @toothpencil</div>
+    <div class="handle-badge">🐦 @toothpencil</div>
+    <div class="handle-badge">📺 @toothpencil</div>
+    <div class="handle-badge">📌 @toothpencil</div>
+    <div class="handle-badge">🌐 toothpencil.com</div>
+  </div>
+
+  <p style="margin-top: 30px; font-family: 'Space Mono', monospace; font-size: 0.8rem; opacity: 0.7;">
+    Bio template: "The world's first pencil you brush your teeth with. 🦷✏️ 1 brush = 1 tree. Sharpen your smile."
+  </p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="emoji-big">🦷✏️</div>
+  <h2>TOOTHPENCIL</h2>
+  <p>Brand Package v1.0 — March 2026</p>
+  <p style="margin-top: 10px;">Founded by Elliot Roth</p>
+  <p style="margin-top: 5px; color: var(--pencil-yellow);">Sharpen Your Smile</p>
+</div>
+
+</body>
+</html>

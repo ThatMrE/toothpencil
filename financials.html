@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toothpencil &#x1F9B7;&#x270F;&#xFE0F; Financial Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --yellow: #FFD700;
+  --mint: #98FB98;
+  --kraft: #D2B48C;
+  --forest: #2E5E3F;
+  --pink: #FFB6C1;
+  --charcoal: #2D2D2D;
+  --bg: #1a1a1a;
+  --white: #FAFAF8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--charcoal);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  padding: 0 0 60px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: rgba(45,45,45,0.97); backdrop-filter: blur(10px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.85rem 2.5rem; border-bottom: 1px solid rgba(255,215,0,0.15);
+}
+
+.site-nav a {
+  font-family: 'Space Mono', monospace; font-size: 0.85rem; font-weight: 700;
+  color: var(--yellow); letter-spacing: 0.08em; text-decoration: none;
+}
+
+.site-nav .links { display: flex; gap: 2rem; align-items: center; }
+.site-nav .links a {
+  font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+.site-nav .links a:hover { color: var(--yellow); }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 90px 24px 0; }
+
+.header { text-align: center; margin-bottom: 48px; padding-top: 20px; }
+.header .emoji { font-size: 3rem; margin-bottom: 8px; }
+.header h1 { font-family: 'Space Mono', monospace; font-size: 2.5rem; font-weight: 900; letter-spacing: 0.1em; }
+.header p { color: var(--yellow); font-family: 'Space Mono', monospace; font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; margin-top: 8px; }
+
+.stats-row { display: flex; gap: 1rem; margin-bottom: 48px; flex-wrap: wrap; }
+.stat-card {
+  flex: 1; min-width: 140px;
+  background: var(--bg); border-radius: 12px; padding: 20px 24px;
+  border: 1px solid rgba(255,215,0,0.2);
+}
+.stat-card .num { font-size: 1.8rem; font-weight: 900; color: var(--yellow); line-height: 1; }
+.stat-card .num.mint { color: var(--mint); }
+.stat-card .num.pink { color: var(--pink); }
+.stat-card .label { font-size: 0.75rem; color: #888; margin-top: 4px; }
+.stat-card .sub { font-size: 0.7rem; color: #555; margin-top: 2px; }
+
+.section { margin-bottom: 56px; }
+.section-title { font-family: 'Space Mono', monospace; font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+.section-sub { font-size: 0.82rem; color: #888; margin-bottom: 20px; }
+
+.chart-wrap { background: var(--bg); border-radius: 16px; padding: 24px; border: 1px solid #333; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+
+.cost-table { width: 100%; }
+.cost-table tr { border-bottom: 1px solid #333; }
+.cost-table td { padding: 10px 8px; font-size: 0.88rem; }
+.cost-table td:last-child { font-weight: 700; color: var(--yellow); text-align: right; font-family: 'Space Mono', monospace; }
+.cost-table tfoot td { font-size: 1rem; font-weight: 900; color: var(--yellow); border-top: 2px solid #555; }
+
+.year-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 20px; }
+.year-card { background: var(--bg); border-radius: 12px; padding: 20px; border: 1px solid #333; }
+.year-card .year { font-weight: 900; font-size: 1.1rem; color: var(--yellow); margin-bottom: 12px; font-family: 'Space Mono', monospace; }
+.year-card .row { display: flex; justify-content: space-between; font-size: 0.82rem; padding: 3px 0; }
+.year-card .row .k { color: #888; }
+.year-card .row .v { font-weight: 600; }
+.year-card .row.net .v { color: var(--yellow); font-weight: 900; }
+
+.cogs-toggle { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+.cogs-btn {
+  padding: 8px 18px; border-radius: 20px; border: none; cursor: pointer;
+  font-size: 0.78rem; font-weight: 700; font-family: 'Space Mono', monospace;
+  background: #333; color: #aaa; transition: all 0.2s;
+}
+.cogs-btn.active { background: var(--yellow); color: var(--charcoal); }
+
+.calc-box { background: var(--bg); border-radius: 16px; padding: 28px; border: 1px solid rgba(255,215,0,0.15); }
+.calc-row { display: flex; gap: 32px; margin-bottom: 24px; flex-wrap: wrap; }
+.calc-input { flex: 1; min-width: 200px; }
+.calc-input label { font-size: 0.78rem; color: #888; display: block; margin-bottom: 8px; }
+.calc-input input[type=range] { width: 100%; accent-color: var(--yellow); }
+.calc-results { display: flex; gap: 16px; flex-wrap: wrap; }
+.calc-stat { flex: 1; min-width: 130px; background: #2a2a2a; border-radius: 10px; padding: 16px 18px; }
+.calc-stat .v { font-size: 1.5rem; font-weight: 900; color: var(--yellow); }
+.calc-stat .l { font-size: 0.72rem; color: #888; margin-top: 3px; }
+
+.footer { text-align: center; padding: 40px 0 20px; border-top: 1px solid #333; margin-top: 20px; }
+.footer .emoji { font-size: 2rem; }
+.footer h3 { font-family: 'Space Mono', monospace; font-size: 1rem; letter-spacing: 0.15em; margin-top: 8px; }
+.footer p { color: #555; font-size: 0.72rem; margin-top: 8px; font-family: 'Space Mono', monospace; }
+
+@media(max-width:700px) {
+  .two-col, .year-cards { grid-template-columns: 1fr; }
+  .stats-row .stat-card { min-width: 100%; }
+  .container { padding: 80px 16px 0; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html">&#x1F9B7;&#x270F;&#xFE0F; TOOTHPENCIL</a>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="brand-package.html">Brand</a>
+    <a href="business-plan.html">Business Plan</a>
+    <a href="financials.html" style="color:var(--yellow);">Financials</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="header">
+    <div class="emoji">&#x1F9B7;&#x270F;&#xFE0F;</div>
+    <h1>TOOTHPENCIL</h1>
+    <p>Financial Dashboard &mdash; Investor View</p>
+  </div>
+
+  <!-- TOP STATS -->
+  <div class="stats-row">
+    <div class="stat-card"><div class="num">$50K</div><div class="label">Seed Round</div><div class="sub">Pre-seed / SAFE</div></div>
+    <div class="stat-card"><div class="num mint">$65K</div><div class="label">Y1 Revenue Target</div><div class="sub">15,000 units</div></div>
+    <div class="stat-card"><div class="num">73%</div><div class="label">Gross Margin (DTC)</div><div class="sub">At $4.99 price</div></div>
+    <div class="stat-card"><div class="num pink">Month 8</div><div class="label">Break-Even</div><div class="sub">~11,400 units</div></div>
+    <div class="stat-card"><div class="num mint">$590K</div><div class="label">Y3 Net Profit</div><div class="sub">54% net margin</div></div>
+  </div>
+
+  <!-- STARTUP COSTS -->
+  <div class="section">
+    <div class="section-title">&#x1F4B0; Startup Costs</div>
+    <div class="section-sub">$50K seed allocation across 7 categories</div>
+    <div class="two-col chart-wrap">
+      <canvas id="chartStartup" height="260"></canvas>
+      <table class="cost-table">
+        <tbody>
+          <tr><td>&#x1F7E1; Production (5K units)</td><td>$22,000</td></tr>
+          <tr><td>&#x1F7E4; Packaging</td><td>$5,000</td></tr>
+          <tr><td>&#x1F7E2; Marketing Launch</td><td>$10,000</td></tr>
+          <tr><td>&#x1F535; Website &amp; Tech</td><td>$3,000</td></tr>
+          <tr><td>&#x1F7E3; Fulfillment Setup</td><td>$4,000</td></tr>
+          <tr><td>&#x26AB; Legal &amp; IP</td><td>$3,000</td></tr>
+          <tr><td>&#x26AA; Reserve</td><td>$3,000</td></tr>
+        </tbody>
+        <tfoot><tr><td>Total Seed Round</td><td>$50,000</td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <!-- COGS BREAKDOWN -->
+  <div class="section">
+    <div class="section-title">&#x1F527; COGS Breakdown by Scale</div>
+    <div class="section-sub">Toggle production volume to see cost curves</div>
+    <div class="cogs-toggle">
+      <button class="cogs-btn" data-scale="100" onclick="updateCogs(100, this)">100 units</button>
+      <button class="cogs-btn" data-scale="1000" onclick="updateCogs(1000, this)">1K units</button>
+      <button class="cogs-btn active" data-scale="10000" onclick="updateCogs(10000, this)">10K units</button>
+      <button class="cogs-btn" data-scale="100000" onclick="updateCogs(100000, this)">100K units</button>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="chartCogs" height="200"></canvas>
+    </div>
+  </div>
+
+  <!-- PRICING CALCULATOR -->
+  <div class="section">
+    <div class="section-title">&#x1F9EE; Pricing &amp; Margin Calculator</div>
+    <div class="section-sub">Adjust price and volume to explore scenarios</div>
+    <div class="calc-box">
+      <div class="calc-row">
+        <div class="calc-input">
+          <label>Price per Unit: <strong id="priceLabel" style="color:var(--yellow);">$4.99</strong></label>
+          <input type="range" id="priceRange" min="2" max="12" step="0.5" value="4.99" oninput="updateCalc()">
+        </div>
+        <div class="calc-input">
+          <label>Annual Volume: <strong id="volLabel" style="color:var(--mint);">10,000 units</strong></label>
+          <input type="range" id="volRange" min="100" max="200000" step="100" value="10000" oninput="updateCalc()">
+        </div>
+      </div>
+      <div class="calc-results">
+        <div class="calc-stat"><div class="v" id="calcRev">$49,900</div><div class="l">Revenue</div></div>
+        <div class="calc-stat"><div class="v" id="calcCogs">$9,400</div><div class="l">COGS</div></div>
+        <div class="calc-stat"><div class="v" id="calcProfit">$40,500</div><div class="l">Gross Profit</div></div>
+        <div class="calc-stat"><div class="v" id="calcMargin">81%</div><div class="l">Gross Margin</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MANUFACTURING COMPARISON -->
+  <div class="section">
+    <div class="section-title">&#x1F3ED; Manufacturing Cost Curve</div>
+    <div class="section-sub">COGS per unit vs. gross margin across production scales</div>
+    <div class="chart-wrap">
+      <canvas id="chartMfg" height="220"></canvas>
+    </div>
+  </div>
+
+  <!-- REVENUE PROJECTIONS -->
+  <div class="section">
+    <div class="section-title">&#x1F4C8; Year 1 Revenue by Channel</div>
+    <div class="section-sub">Monthly revenue — DTC, Wholesale (Hello Products), Subscription</div>
+    <div class="chart-wrap">
+      <canvas id="chartRevenue" height="220"></canvas>
+    </div>
+    <div class="year-cards">
+      <div class="year-card">
+        <div class="year">Year 1</div>
+        <div class="row"><span class="k">Revenue</span><span class="v">$65,000</span></div>
+        <div class="row"><span class="k">COGS</span><span class="v">$18,800</span></div>
+        <div class="row"><span class="k">Gross Profit</span><span class="v" style="color:var(--mint)">$46,200</span></div>
+        <div class="row"><span class="k">Gross Margin</span><span class="v">71%</span></div>
+        <div class="row net"><span class="k">Net Profit</span><span class="v">$9,700</span></div>
+      </div>
+      <div class="year-card">
+        <div class="year">Year 2</div>
+        <div class="row"><span class="k">Revenue</span><span class="v">$340,000</span></div>
+        <div class="row"><span class="k">COGS</span><span class="v">$75,200</span></div>
+        <div class="row"><span class="k">Gross Profit</span><span class="v" style="color:var(--mint)">$264,800</span></div>
+        <div class="row"><span class="k">Gross Margin</span><span class="v">78%</span></div>
+        <div class="row net"><span class="k">Net Profit</span><span class="v">$121,800</span></div>
+      </div>
+      <div class="year-card">
+        <div class="year">Year 3</div>
+        <div class="row"><span class="k">Revenue</span><span class="v">$1,100,000</span></div>
+        <div class="row"><span class="k">COGS</span><span class="v">$155,000</span></div>
+        <div class="row"><span class="k">Gross Profit</span><span class="v" style="color:var(--mint)">$945,000</span></div>
+        <div class="row"><span class="k">Gross Margin</span><span class="v">86%</span></div>
+        <div class="row net"><span class="k">Net Profit</span><span class="v">$590,000</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BREAK EVEN -->
+  <div class="section">
+    <div class="section-title">&#x2696;&#xFE0F; Break-Even Analysis</div>
+    <div class="section-sub">Revenue vs. total costs &mdash; break-even at ~11,400 units</div>
+    <div class="chart-wrap">
+      <canvas id="chartBreakeven" height="220"></canvas>
+    </div>
+  </div>
+
+  <!-- SUBSCRIPTION -->
+  <div class="section">
+    <div class="section-title">&#x1F4E6; Subscription Economics</div>
+    <div class="section-sub">&ldquo;The Pencil Case&rdquo; quarterly subscription model</div>
+    <div class="chart-wrap">
+      <canvas id="chartSubs" height="220"></canvas>
+    </div>
+    <div class="stats-row" style="margin-top:20px; margin-bottom:0;">
+      <div class="stat-card"><div class="num">$8</div><div class="label">Target CAC</div><div class="sub">Via social + influencer</div></div>
+      <div class="stat-card"><div class="num mint">$60</div><div class="label">Avg LTV (18mo)</div><div class="sub">75% annual retention</div></div>
+      <div class="stat-card"><div class="num">7.5x</div><div class="label">LTV:CAC Ratio</div><div class="sub">Healthy &gt; 3x</div></div>
+      <div class="stat-card"><div class="num pink">Q1</div><div class="label">Payback Period</div><div class="sub">First shipment</div></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="emoji">&#x1F9B7;&#x270F;&#xFE0F;</div>
+    <h3>TOOTHPENCIL &mdash; SHARPEN YOUR SMILE</h3>
+    <p>Financial Dashboard &middot; March 2026 &middot; Confidential</p>
+  </div>
+</div>
+
+<script>
+const Y = '#FFD700', M = '#98FB98', P = '#FFB6C1', K = '#D2B48C', F = '#2E5E3F';
+const grid = { color: 'rgba(255,255,255,0.07)' };
+const tick = { color: '#888', font: { family: "'Inter', sans-serif", size: 11 } };
+const fmt = n => n >= 1000000 ? '$'+(n/1000000).toFixed(1)+'M' : n >= 1000 ? '$'+(n/1000).toFixed(0)+'K' : '$'+n.toFixed(2);
+
+// 1. Startup Costs Donut
+new Chart(document.getElementById('chartStartup'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Production', 'Packaging', 'Marketing', 'Website', 'Fulfillment', 'Legal', 'Reserve'],
+    datasets: [{ data: [22000,5000,10000,3000,4000,3000,3000], backgroundColor: [Y,K,M,F,P,'#8884d8','#888'], borderWidth: 2, borderColor: '#2D2D2D' }]
+  },
+  options: { responsive: true, plugins: { legend: { position: 'right', labels: { color: '#ccc', font: { size: 11 } } }, tooltip: { callbacks: { label: ctx => ' '+fmt(ctx.raw) } } } }
+});
+
+// 2. COGS Breakdown
+const cogsData = {
+  100:    [1.80,0.95,1.50,0.25,0.15,0.35,0.20],
+  1000:   [0.65,0.45,0.35,0.10,0.08,0.15,0.09],
+  10000:  [0.35,0.22,0.15,0.05,0.04,0.08,0.05],
+  100000: [0.22,0.15,0.08,0.03,0.03,0.06,0.05]
+};
+const cogsLabels = ['Handle','Bristles','Assembly','Ferrule','Cap','Packaging','QC'];
+let cogsChart = new Chart(document.getElementById('chartCogs'), {
+  type: 'bar',
+  data: { labels: cogsLabels, datasets: [{ label: 'Cost/Unit ($)', data: cogsData[10000], backgroundColor: Y, borderRadius: 6 }] },
+  options: { responsive: true, scales: { x: { grid, ticks: tick }, y: { grid, ticks: { ...tick, callback: v => '$'+v.toFixed(2) } } }, plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' $'+ctx.raw.toFixed(2) } } } }
+});
+
+function updateCogs(scale, btn) {
+  document.querySelectorAll('.cogs-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  cogsChart.data.datasets[0].data = cogsData[scale];
+  cogsChart.update();
+}
+
+// 3. Pricing calculator
+function updateCalc() {
+  const price = parseFloat(document.getElementById('priceRange').value);
+  const vol = parseInt(document.getElementById('volRange').value);
+  document.getElementById('priceLabel').textContent = '$'+price.toFixed(2);
+  document.getElementById('volLabel').textContent = (vol >= 1000 ? (vol/1000).toFixed(0)+'K' : vol)+' units';
+  const scale = vol >= 100000 ? 100000 : vol >= 10000 ? 10000 : vol >= 1000 ? 1000 : 100;
+  const cogs = cogsData[scale].reduce((a,b)=>a+b,0) * vol;
+  const rev = price * vol;
+  const profit = rev - cogs;
+  document.getElementById('calcRev').textContent = fmt(rev);
+  document.getElementById('calcCogs').textContent = fmt(cogs);
+  document.getElementById('calcProfit').textContent = fmt(profit);
+  document.getElementById('calcMargin').textContent = Math.round((profit/rev)*100)+'%';
+}
+updateCalc();
+
+// 4. Manufacturing
+const mfg = [
+  { x: '50 units\n(Hand)', cogs: 5.20, margin: -4 },
+  { x: '500 units\n(Gen Pencil)', cogs: 1.87, margin: 62 },
+  { x: '5K units\n(Production)', cogs: 1.28, margin: 74 },
+  { x: '10K units\n(Line)', cogs: 0.94, margin: 81 },
+  { x: '100K units\n(Auto)', cogs: 0.62, margin: 88 },
+];
+new Chart(document.getElementById('chartMfg'), {
+  type: 'bar',
+  data: {
+    labels: mfg.map(d=>d.x),
+    datasets: [
+      { label: 'COGS/Unit ($)', data: mfg.map(d=>d.cogs), backgroundColor: Y, borderRadius: 6, yAxisID: 'y' },
+      { label: 'Gross Margin (%)', data: mfg.map(d=>d.margin), type: 'line', borderColor: M, pointBackgroundColor: M, pointRadius: 5, tension: 0.3, yAxisID: 'y2', borderWidth: 2 }
+    ]
+  },
+  options: { responsive: true, scales: {
+    x: { grid, ticks: tick },
+    y: { grid, ticks: { ...tick, callback: v => '$'+v }, position: 'left' },
+    y2: { grid: { display: false }, ticks: { ...tick, color: M, callback: v => v+'%' }, position: 'right' }
+  }, plugins: { legend: { labels: { color: '#ccc', font: { size: 11 } } } } }
+});
+
+// 5. Revenue
+const months = ['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11','M12'];
+new Chart(document.getElementById('chartRevenue'), {
+  type: 'bar',
+  data: {
+    labels: months,
+    datasets: [
+      { label: 'DTC', data: [500,800,1200,1800,2400,3200,3800,4200,4800,5200,5800,6500], backgroundColor: Y+'cc', stack: 's' },
+      { label: 'Wholesale', data: [0,0,500,800,1200,2000,2500,3000,3500,4000,4500,5000], backgroundColor: K+'cc', stack: 's' },
+      { label: 'Subscription', data: [0,0,200,500,800,1200,1600,2000,2500,3000,3500,4200], backgroundColor: M+'cc', stack: 's' }
+    ]
+  },
+  options: { responsive: true, scales: { x: { grid, ticks: tick, stacked: true }, y: { grid, ticks: { ...tick, callback: v => fmt(v) }, stacked: true } }, plugins: { legend: { labels: { color: '#ccc', font: { size: 11 } } } } }
+});
+
+// 6. Break-Even
+const beUnits = Array.from({length:16},(_,i)=>i*1000);
+new Chart(document.getElementById('chartBreakeven'), {
+  type: 'line',
+  data: {
+    labels: beUnits.map(u => u >= 1000 ? u/1000+'K' : u.toString()),
+    datasets: [
+      { label: 'Revenue', data: beUnits.map(u=>u*4.33), borderColor: M, pointRadius: 0, borderWidth: 2, tension: 0.3 },
+      { label: 'Total Costs', data: beUnits.map(u=>50000+u*1.25), borderColor: P, pointRadius: 0, borderWidth: 2, tension: 0.3 }
+    ]
+  },
+  options: { responsive: true, scales: { x: { grid, ticks: tick }, y: { grid, ticks: { ...tick, callback: v => fmt(v) } } }, plugins: { legend: { labels: { color: '#ccc', font: { size: 11 } } } } }
+});
+
+// 7. Subscriptions
+new Chart(document.getElementById('chartSubs'), {
+  type: 'bar',
+  data: {
+    labels: ['Q1','Q2','Q3','Q4','Q5','Q6','Q7','Q8'],
+    datasets: [
+      { label: 'Subscribers', data: [50,150,350,600,900,1200,1500,1800], backgroundColor: Y+'cc', borderRadius: 6, yAxisID: 'y' },
+      { label: 'MRR ($)', data: [500,1500,3500,6000,9000,12000,15000,18000], type: 'line', borderColor: M, pointBackgroundColor: M, pointRadius: 4, borderWidth: 2, yAxisID: 'y2', tension: 0.3 }
+    ]
+  },
+  options: { responsive: true, scales: {
+    x: { grid, ticks: tick },
+    y: { grid, ticks: tick, position: 'left' },
+    y2: { grid: { display: false }, ticks: { ...tick, color: M, callback: v => fmt(v) }, position: 'right' }
+  }, plugins: { legend: { labels: { color: '#ccc', font: { size: 11 } } } } }
+});
+</script>
+</body>
+</html>
